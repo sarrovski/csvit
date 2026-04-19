@@ -55,6 +55,7 @@
     font-feature-settings: "ss01", "cv11";
   }
 
+  /* Subtle grain texture */
   .grain::before {
     content: "";
     position: fixed;
@@ -65,9 +66,15 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
+  /* Ember glow */
   .ember-glow {
     background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(245,106,20,0.18), transparent 70%);
   }
+  .ember-glow-sm {
+    background: radial-gradient(circle at 30% 20%, rgba(245,106,20,0.12), transparent 60%);
+  }
+
+  /* Grid background */
   .grid-bg {
     background-image:
       linear-gradient(rgba(118,118,138,0.06) 1px, transparent 1px),
@@ -76,6 +83,7 @@
     mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 85%);
   }
 
+  /* Animations */
   @keyframes rise {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
@@ -94,16 +102,43 @@
   }
   .ticker-track { animation: ticker 40s linear infinite; }
 
+  /* Logo mark */
   .logo-mark {
     background: linear-gradient(135deg, #f56a14 0%, #ff8533 100%);
     box-shadow: 0 0 0 1px rgba(245,106,20,0.3), 0 8px 24px -8px rgba(245,106,20,0.5);
   }
 
+  /* Card hover */
+  .card {
+    transition: transform 0.4s cubic-bezier(0.2,0.7,0.2,1), border-color 0.3s, background 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245,106,20,0.35);
+  }
+
+  /* Pricing featured card */
+  .featured-ring {
+    background: linear-gradient(180deg, rgba(245,106,20,0.5), rgba(245,106,20,0.05));
+    padding: 1px;
+  }
+
+  /* Nav blur */
   .nav-blur {
     backdrop-filter: saturate(140%) blur(14px);
     -webkit-backdrop-filter: saturate(140%) blur(14px);
   }
 
+  /* Numeric display */
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* Divider */
+  .h-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(118,118,138,0.25), transparent);
+  }
+
+  /* Button */
   .btn-primary {
     background: linear-gradient(180deg, #ff8533, #e05510);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 6px 24px -8px rgba(245,106,20,0.55);
@@ -113,116 +148,477 @@
     transform: translateY(-1px);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 10px 28px -6px rgba(245,106,20,0.65);
   }
+  .btn-ghost {
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(214,214,220,0.35);
+  }
 
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #09090b; }
+  ::-webkit-scrollbar-thumb { background: #22222a; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2e2e38; }
+
+  /* Fraunces display tweaks */
   .display {
     font-family: 'Fraunces', serif;
     font-optical-sizing: auto;
     font-variation-settings: "opsz" 144, "SOFT" 50;
     letter-spacing: -0.02em;
   }
+
+  /* Marquee mask */
+  .marquee-mask {
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  }
 </style>
 </head>
 
 <body class="grain relative overflow-x-hidden">
 
-  <div id="gateway-overlay" class="hidden fixed inset-0 z-[100] bg-ink-950 items-center justify-center text-center">
-    <div class="relative">
-      <div class="w-12 h-12 border-4 border-white/10 border-t-ember-500 rounded-full animate-spin mb-6 mx-auto"></div>
-      <h2 class="text-xl font-medium text-zinc-300">Securing your session...</h2>
-      <p class="text-zinc-500 text-sm mt-2">Preparing your Sense-Optimization license</p>
+  <!-- Ambient glow -->
+  <div class="pointer-events-none fixed inset-0 ember-glow z-0"></div>
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 nav-blur bg-ink-950/70 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="logo-mark w-8 h-8 rounded-md flex items-center justify-center font-display font-semibold text-ink-950 text-[13px] tracking-tight">CS</span>
+        <span class="text-ink-200 font-medium tracking-tight">Sense<span class="text-ember-400">·</span>Optimization</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-ink-300">
+        <a href="#services" class="hover:text-white transition">Services</a>
+        <a href="#how" class="hover:text-white transition">How it works</a>
+        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="#pricing" class="hidden sm:inline-flex items-center px-3.5 py-2 rounded-md border border-white/10 text-ink-200 text-sm btn-ghost">Sign in</a>
+        <a href="#pricing" class="inline-flex items-center px-4 py-2 rounded-md btn-primary text-white text-sm font-medium">Get started</a>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <div id="main-content">
-    <div class="pointer-events-none fixed inset-0 ember-glow z-0"></div>
+  <main id="top" class="relative z-10">
 
-    <header class="sticky top-0 z-40 nav-blur bg-ink-950/70 border-b border-white/5">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-        <a href="#top" class="flex items-center gap-3 group">
-          <span class="logo-mark w-8 h-8 rounded-md flex items-center justify-center font-display font-semibold text-ink-950 text-[13px] tracking-tight">CS</span>
-          <span class="text-ink-200 font-medium tracking-tight">Sense<span class="text-ember-400">·</span>Optimization</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-8 text-sm text-ink-300">
-          <a href="#services" class="hover:text-white transition">Services</a>
-          <a href="#how" class="hover:text-white transition">How it works</a>
-          <a href="#pricing" class="hover:text-white transition">Pricing</a>
-          <a href="#faq" class="hover:text-white transition">FAQ</a>
-        </nav>
-        <div class="flex items-center gap-3">
-          <a href="#pricing" class="hidden sm:inline-flex items-center px-3.5 py-2 rounded-md border border-white/10 text-ink-200 text-sm">Sign in</a>
-          <a href="#pricing" class="inline-flex items-center px-4 py-2 rounded-md btn-primary text-white text-sm font-medium">Get started</a>
+    <!-- HERO -->
+    <section class="relative pt-24 pb-28 md:pt-36 md:pb-40">
+      <div class="absolute inset-0 grid-bg pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
+        <div class="flex items-center gap-3 mb-8 rise" style="animation-delay:.05s">
+          <span class="relative flex h-2 w-2">
+            <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-ember-400"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-ember-400"></span>
+          </span>
+          <span class="text-xs uppercase tracking-[0.2em] text-ink-300 font-mono">v3.2 — stable channel</span>
+        </div>
+
+        <h1 class="display text-5xl sm:text-6xl lg:text-8xl font-light text-white leading-[0.95] max-w-5xl rise" style="animation-delay:.1s">
+          Elevate your
+          <span class="italic font-normal text-ember-300">system</span>
+          performance.
+        </h1>
+
+        <p class="mt-8 max-w-xl text-lg text-ink-300 leading-relaxed rise" style="animation-delay:.25s">
+          Measurable tuning for Windows workstations. We reduce background contention, trim input latency, and surface the metrics that actually matter — so your hardware performs the way it was specced to.
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center gap-4 rise" style="animation-delay:.35s">
+          <a href="#pricing" class="btn-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-md text-white font-medium">
+            Start tuning
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#how" class="btn-ghost inline-flex items-center gap-2 px-6 py-3.5 rounded-md border border-white/10 text-ink-200 font-medium">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Watch a 2-min demo
+          </a>
+        </div>
+
+        <!-- Stat strip -->
+        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-lg overflow-hidden rise" style="animation-delay:.5s">
+          <div class="bg-ink-950 p-6">
+            <div class="display text-4xl text-white tabular">-38<span class="text-ember-400 text-2xl">%</span></div>
+            <div class="mt-2 text-xs uppercase tracking-wider text-ink-400 font-mono">avg. input latency</div>
+          </div>
+          <div class="bg-ink-950 p-6">
+            <div class="display text-4xl text-white tabular">+22<span class="text-ember-400 text-2xl">%</span></div>
+            <div class="mt-2 text-xs uppercase tracking-wider text-ink-400 font-mono">1% low FPS</div>
+          </div>
+          <div class="bg-ink-950 p-6">
+            <div class="display text-4xl text-white tabular">14k+</div>
+            <div class="mt-2 text-xs uppercase tracking-wider text-ink-400 font-mono">active workstations</div>
+          </div>
+          <div class="bg-ink-950 p-6">
+            <div class="display text-4xl text-white tabular">4.9<span class="text-ember-400 text-2xl">/5</span></div>
+            <div class="mt-2 text-xs uppercase tracking-wider text-ink-400 font-mono">user rating</div>
+          </div>
         </div>
       </div>
-    </header>
+    </section>
 
-    <main id="top" class="relative z-10">
-      <section class="relative pt-24 pb-28 md:pt-36 md:pb-40">
-        <div class="absolute inset-0 grid-bg pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
-          <div class="flex items-center gap-3 mb-8 rise">
-            <span class="relative flex h-2 w-2">
-              <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-ember-400"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-ember-400"></span>
-            </span>
-            <span class="text-xs uppercase tracking-[0.2em] text-ink-300 font-mono">v3.2 — stable channel</span>
+    <!-- LOGO TICKER -->
+    <section class="py-10 border-y border-white/5 bg-ink-900/40">
+      <div class="text-center text-xs uppercase tracking-[0.25em] text-ink-400 font-mono mb-6">Trusted by studios, creators & IT teams</div>
+      <div class="marquee-mask overflow-hidden">
+        <div class="ticker-track flex gap-16 whitespace-nowrap text-ink-400/80 text-xl font-display italic">
+          <span>Northwind Studios</span><span class="text-ember-400/40">◆</span>
+          <span>Harbor Creative</span><span class="text-ember-400/40">◆</span>
+          <span>Meridian Labs</span><span class="text-ember-400/40">◆</span>
+          <span>Valkyr Broadcast</span><span class="text-ember-400/40">◆</span>
+          <span>Cold Fusion PC</span><span class="text-ember-400/40">◆</span>
+          <span>Arclight Media</span><span class="text-ember-400/40">◆</span>
+          <!-- duplicate for seamless loop -->
+          <span>Northwind Studios</span><span class="text-ember-400/40">◆</span>
+          <span>Harbor Creative</span><span class="text-ember-400/40">◆</span>
+          <span>Meridian Labs</span><span class="text-ember-400/40">◆</span>
+          <span>Valkyr Broadcast</span><span class="text-ember-400/40">◆</span>
+          <span>Cold Fusion PC</span><span class="text-ember-400/40">◆</span>
+          <span>Arclight Media</span><span class="text-ember-400/40">◆</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-28 md:py-36 relative">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex items-end justify-between flex-wrap gap-6 mb-16">
+          <div class="max-w-2xl">
+            <div class="text-xs uppercase tracking-[0.25em] text-ember-400 font-mono mb-5">— 01 / services</div>
+            <h2 class="display text-4xl md:text-6xl text-white font-light leading-tight">
+              Three tools. One discipline: <span class="italic text-ember-300">measured performance.</span>
+            </h2>
           </div>
-          <h1 class="display text-5xl sm:text-6xl lg:text-8xl font-light text-white leading-[0.95] max-w-5xl rise">
-            Elevate your <span class="italic font-normal text-ember-300">system</span> performance.
-          </h1>
-          <p class="mt-8 max-w-xl text-lg text-ink-300 leading-relaxed rise">
-            Professional tuning for Windows workstations. We reduce input latency and optimize resource allocation.
+          <p class="text-ink-300 max-w-sm">
+            Every service ships with before/after benchmarks. If we can't show a measurable change on your machine, we refund.
           </p>
-          <div class="mt-10 flex flex-wrap items-center gap-4 rise">
-            <a href="#pricing" class="btn-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-md text-white font-medium">Start tuning</a>
-          </div>
         </div>
-      </section>
 
-      <section id="pricing" class="py-28 md:py-36 relative">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
-          <div class="text-center mb-16">
-            <h2 class="display text-4xl md:text-6xl text-white font-light">Simple plans.</h2>
-          </div>
-          <div class="grid md:grid-cols-3 gap-5 items-stretch">
-            <div class="rounded-xl bg-ink-900/60 border border-white/5 p-8 flex flex-col">
-              <h3 class="font-medium text-white mb-6">Sense-Opti Basic</h3>
-              <div class="mb-2"><span class="display text-5xl text-white">$4</span><span class="text-ink-400 text-sm ml-1">/ 24h</span></div>
-              <p class="text-sm text-ink-300 mb-8">Perfect for a single session.</p>
-              <button class="btn-primary py-3 rounded-md text-white font-medium">Choose Basic</button>
+        <div class="grid md:grid-cols-3 gap-5">
+          <!-- Card 1 -->
+          <article class="card group relative rounded-xl bg-ink-900/60 border border-white/5 p-8 overflow-hidden">
+            <div class="absolute inset-0 ember-glow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-8">
+                <span class="font-mono text-xs text-ink-400">01</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff8533" stroke-width="1.4">
+                  <rect x="3" y="3" width="7" height="7" rx="1"/>
+                  <rect x="14" y="3" width="7" height="7" rx="1"/>
+                  <rect x="3" y="14" width="7" height="7" rx="1"/>
+                  <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+              </div>
+              <h3 class="display text-2xl text-white mb-3">Process Optimization</h3>
+              <p class="text-ink-300 text-sm leading-relaxed mb-8">
+                Intelligent process prioritization and CPU affinity management. We identify contention from background services and schedule threads for sustained, predictable throughput under load.
+              </p>
+              <ul class="space-y-2 text-sm text-ink-200">
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> Real-time CPU affinity profiles</li>
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> Background service auditing</li>
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> Thermal & power plan tuning</li>
+              </ul>
             </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card group relative rounded-xl bg-ink-900/60 border border-white/5 p-8 overflow-hidden">
+            <div class="absolute inset-0 ember-glow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-8">
+                <span class="font-mono text-xs text-ink-400">02</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff8533" stroke-width="1.4">
+                  <path d="M4 12h4l2-7 4 14 2-7h4"/>
+                </svg>
+              </div>
+              <h3 class="display text-2xl text-white mb-3">Input Lag Reduction</h3>
+              <p class="text-ink-300 text-sm leading-relaxed mb-8">
+                End-to-end latency auditing, from USB polling to display pipeline. We measure with high-speed capture and tune the stack so what you do at the peripheral reaches the screen faster.
+              </p>
+              <ul class="space-y-2 text-sm text-ink-200">
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> Polling rate calibration</li>
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> Frame pacing diagnostics</li>
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> Display pipeline review</li>
+              </ul>
             </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card group relative rounded-xl bg-ink-900/60 border border-white/5 p-8 overflow-hidden">
+            <div class="absolute inset-0 ember-glow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-8">
+                <span class="font-mono text-xs text-ink-400">03</span>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff8533" stroke-width="1.4">
+                  <rect x="3" y="4" width="18" height="12" rx="1"/>
+                  <path d="M7 20h10M12 16v4"/>
+                </svg>
+              </div>
+              <h3 class="display text-2xl text-white mb-3">Custom Overlays</h3>
+              <p class="text-ink-300 text-sm leading-relaxed mb-8">
+                Configurable hardware-monitoring overlays: FPS, frametime, CPU/GPU temps, memory pressure. Clean, unobtrusive, and built for streamers and technicians who want signal, not noise.
+              </p>
+              <ul class="space-y-2 text-sm text-ink-200">
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> Live sensor monitoring</li>
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> Custom layout presets</li>
+                <li class="flex items-center gap-2"><span class="text-ember-400">→</span> CSV export for analysis</li>
+              </ul>
+            </div>
+          </article>
         </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-white/5 bg-ink-950 relative z-10 py-16">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10 flex justify-between text-xs text-ink-400 font-mono">
-        <div>© 2026 Sense-Optimization. All rights reserved.</div>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const productId = urlParams.get('id');
-      const gatewayOverlay = document.getElementById('gateway-overlay');
-      const mainContent = document.getElementById('main-content');
+    <!-- HOW IT WORKS -->
+    <section id="how" class="py-28 md:py-36 border-t border-white/5 bg-ink-900/30">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-xs uppercase tracking-[0.25em] text-ember-400 font-mono mb-5">— 02 / workflow</div>
+        <h2 class="display text-4xl md:text-5xl text-white font-light leading-tight max-w-3xl mb-20">
+          A clear, three-step path from baseline to benchmark.
+        </h2>
 
-      if (productId) {
-        // Active le "pont" : Cache le site et montre le chargement
-        gatewayOverlay.classList.remove('hidden');
-        gatewayOverlay.classList.add('flex');
-        mainContent.style.display = 'none';
+        <div class="grid md:grid-cols-3 gap-10">
+          <div>
+            <div class="display text-6xl text-ember-400/40 mb-4">01</div>
+            <h3 class="text-white text-xl mb-3 font-medium">Baseline audit</h3>
+            <p class="text-ink-300 text-sm leading-relaxed">
+              We run a full diagnostic: CPU scheduling, memory timings, storage latency, network jitter. You receive a complete report before anything is modified.
+            </p>
+          </div>
+          <div>
+            <div class="display text-6xl text-ember-400/40 mb-4">02</div>
+            <h3 class="text-white text-xl mb-3 font-medium">Targeted tuning</h3>
+            <p class="text-ink-300 text-sm leading-relaxed">
+              Configurations are applied in reversible profiles. Each change is logged, documented, and can be rolled back instantly from the control panel.
+            </p>
+          </div>
+          <div>
+            <div class="display text-6xl text-ember-400/40 mb-4">03</div>
+            <h3 class="text-white text-xl mb-3 font-medium">Verified uplift</h3>
+            <p class="text-ink-300 text-sm leading-relaxed">
+              A second benchmark pass confirms the delta. Results are summarized in a shareable report — useful for studios validating workstation configs at scale.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Redirige vers ton shop masqué par le CNAME
-        const shopUrl = "https://shop.sense-optimization.store/product/";
-        setTimeout(() => {
-          window.location.href = shopUrl + productId;
-        }, 1500);
-      }
-    });
-  </script>
+    <!-- PRICING -->
+    <section id="pricing" class="py-28 md:py-36 relative">
+      <div class="absolute inset-0 ember-glow pointer-events-none opacity-60"></div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
+        <div class="text-center mb-16">
+          <div class="text-xs uppercase tracking-[0.25em] text-ember-400 font-mono mb-5">— 03 / pricing</div>
+          <h2 class="display text-4xl md:text-6xl text-white font-light leading-tight">
+            Simple plans. <span class="italic text-ember-300">No surprises.</span>
+          </h2>
+          <p class="mt-6 text-ink-300 max-w-xl mx-auto">
+            All plans include the full optimization suite and overlay tools. Choose the commitment that fits your workflow.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 items-stretch">
+          <!-- Basic -->
+          <div class="card rounded-xl bg-ink-900/60 border border-white/5 p-8 flex flex-col">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-medium text-white tracking-tight">Sense-Opti Basic</h3>
+              <span class="text-xs font-mono text-ink-400 uppercase tracking-wider">Daily</span>
+            </div>
+            <div class="mb-2">
+              <span class="display text-5xl text-white tabular">$4</span>
+              <span class="text-ink-400 text-sm ml-1">/ 24h</span>
+            </div>
+            <p class="text-sm text-ink-300 mb-8">Perfect for trying the full suite or a single session of tuning before an event or deadline.</p>
+            <ul class="space-y-3 text-sm text-ink-200 mb-10 flex-1">
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Full optimization toolkit</li>
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Standard overlay presets</li>
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Community support</li>
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> One device</li>
+            </ul>
+            <a href="#" class="btn-ghost w-full inline-flex justify-center items-center px-5 py-3 rounded-md border border-white/10 text-ink-200 font-medium">Choose Basic</a>
+          </div>
+
+          <!-- Pro (featured) -->
+          <div class="featured-ring rounded-xl relative">
+            <div class="rounded-xl bg-ink-900 p-8 flex flex-col h-full relative">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-ember-500 text-ink-950 text-[10px] uppercase tracking-[0.2em] font-semibold">Most popular</div>
+              <div class="flex items-center justify-between mb-6 mt-2">
+                <h3 class="font-medium text-white tracking-tight">Sense-Opti Pro</h3>
+                <span class="text-xs font-mono text-ember-400 uppercase tracking-wider">Monthly</span>
+              </div>
+              <div class="mb-2">
+                <span class="display text-5xl text-white tabular">$19</span>
+                <span class="text-ink-400 text-sm ml-1">/ month</span>
+              </div>
+              <p class="text-sm text-ink-300 mb-8">The default for creators and teams. Ongoing updates, full monitoring, and priority channels.</p>
+              <ul class="space-y-3 text-sm text-ink-200 mb-10 flex-1">
+                <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Everything in Basic</li>
+                <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Custom overlay builder</li>
+                <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Benchmark history & reports</li>
+                <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Priority email support</li>
+                <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Up to 3 devices</li>
+              </ul>
+              <a href="#" class="btn-primary w-full inline-flex justify-center items-center px-5 py-3 rounded-md text-white font-medium">Choose Pro</a>
+            </div>
+          </div>
+
+          <!-- Elite -->
+          <div class="card rounded-xl bg-ink-900/60 border border-white/5 p-8 flex flex-col">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-medium text-white tracking-tight">Sense-Opti Elite</h3>
+              <span class="text-xs font-mono text-ink-400 uppercase tracking-wider">Lifetime</span>
+            </div>
+            <div class="mb-2">
+              <span class="display text-5xl text-white tabular">$249</span>
+              <span class="text-ink-400 text-sm ml-1">once</span>
+            </div>
+            <p class="text-sm text-ink-300 mb-8">Best value for power users and studios standardizing across multiple workstations.</p>
+            <ul class="space-y-3 text-sm text-ink-200 mb-10 flex-1">
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Everything in Pro</li>
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Lifetime feature updates</li>
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Advanced CLI & scripting</li>
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Dedicated onboarding session</li>
+              <li class="flex items-start gap-2"><span class="text-ember-400 mt-0.5">✓</span> Up to 5 devices</li>
+            </ul>
+            <a href="#" class="btn-ghost w-full inline-flex justify-center items-center px-5 py-3 rounded-md border border-white/10 text-ink-200 font-medium">Choose Elite</a>
+          </div>
+        </div>
+
+        <p class="text-center text-xs text-ink-400 mt-10 font-mono">
+          All prices in USD. 14-day refund policy. Taxes calculated at checkout.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-28 md:py-36 border-t border-white/5">
+      <div class="max-w-4xl mx-auto px-6 lg:px-10">
+        <div class="text-xs uppercase tracking-[0.25em] text-ember-400 font-mono mb-5">— 04 / common questions</div>
+        <h2 class="display text-4xl md:text-5xl text-white font-light leading-tight mb-14">
+          Things people ask us.
+        </h2>
+
+        <div class="divide-y divide-white/5 border-y border-white/5">
+          <details class="group py-6">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="text-white font-medium">Is Sense-Optimization compatible with Windows 11?</span>
+              <span class="text-ember-400 text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-ink-300 text-sm leading-relaxed">
+              Yes. We support Windows 10 (21H2+) and Windows 11 on x64 hardware. All tuning profiles are tested against both platforms and updated when Microsoft ships major servicing updates.
+            </p>
+          </details>
+          <details class="group py-6">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="text-white font-medium">Are the changes reversible?</span>
+              <span class="text-ember-400 text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-ink-300 text-sm leading-relaxed">
+              Every profile is applied through a versioned, reversible system. A single click restores your machine to its prior configuration, and we keep a full audit log of every change made.
+            </p>
+          </details>
+          <details class="group py-6">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="text-white font-medium">Will the overlay work with streaming software?</span>
+              <span class="text-ember-400 text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-ink-300 text-sm leading-relaxed">
+              The overlay renders through a standard capture-friendly layer and is compatible with OBS, Streamlabs, and similar broadcast tools. You can toggle visibility per-scene.
+            </p>
+          </details>
+          <details class="group py-6">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="text-white font-medium">How does the refund policy work?</span>
+              <span class="text-ember-400 text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-ink-300 text-sm leading-relaxed">
+              Within 14 days of purchase, contact support for a full refund, no questions asked. For lifetime plans, the same window applies from the date of purchase.
+            </p>
+          </details>
+          <details class="group py-6">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="text-white font-medium">Do you offer volume licensing for studios?</span>
+              <span class="text-ember-400 text-xl transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-ink-300 text-sm leading-relaxed">
+              Yes. For teams of 10+ workstations we offer discounted licenses and centralized deployment. Contact sales@sense-optimization.com for a quote.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 border-t border-white/5 relative overflow-hidden">
+      <div class="absolute inset-0 ember-glow pointer-events-none"></div>
+      <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative">
+        <h2 class="display text-4xl md:text-6xl text-white font-light leading-tight">
+          Ready to see <span class="italic text-ember-300">real numbers?</span>
+        </h2>
+        <p class="mt-6 text-ink-300 max-w-lg mx-auto">
+          Install, benchmark, tune, verify. The whole loop takes less than an hour.
+        </p>
+        <div class="mt-10 flex justify-center gap-4 flex-wrap">
+          <a href="#pricing" class="btn-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-md text-white font-medium">
+            Get started
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="mailto:sales@sense-optimization.com" class="btn-ghost inline-flex items-center px-6 py-3.5 rounded-md border border-white/10 text-ink-200 font-medium">Talk to sales</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 bg-ink-950 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+      <div class="grid md:grid-cols-4 gap-10 mb-14">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="logo-mark w-8 h-8 rounded-md flex items-center justify-center font-display font-semibold text-ink-950 text-[13px] tracking-tight">CS</span>
+            <span class="text-ink-200 font-medium tracking-tight">Sense<span class="text-ember-400">·</span>Optimization</span>
+          </div>
+          <p class="text-ink-400 text-sm max-w-sm leading-relaxed">
+            Measured, reversible system tuning and hardware monitoring for creators, engineers, and competitive teams.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-white text-sm font-medium mb-4">Product</h4>
+          <ul class="space-y-3 text-sm text-ink-400">
+            <li><a href="#services" class="hover:text-white transition">Services</a></li>
+            <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+            <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+            <li><a href="mailto:support@sense-optimization.com" class="hover:text-white transition">Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white text-sm font-medium mb-4">Legal</h4>
+          <ul class="space-y-3 text-sm text-ink-400">
+            <li><a href="terms.html" class="hover:text-white transition">Terms of Service</a></li>
+            <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="refund.html" class="hover:text-white transition">Refund Policy</a></li>
+            <li><a href="mailto:support@sense-optimization.com" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="h-divider mb-8"></div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 text-xs text-ink-400 font-mono">
+        <div>© 2026 Sense-Optimization. All rights reserved.</div>
+        <div class="flex items-center gap-2">
+          <span class="relative flex h-1.5 w-1.5">
+            <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-ember-400"></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-ember-400"></span>
+          </span>
+          All systems operational
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
