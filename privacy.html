@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Sense-Optimization</title>
+<meta name="description" content="How Sense-Optimization collects, uses, and protects your personal data." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: { 950: '#09090b', 900: '#0e0e11', 800: '#17171c', 700: '#22222a', 600: '#2e2e38', 500: '#4a4a57', 400: '#76768a', 300: '#a6a6b8', 200: '#d4d4dc' },
+          ember: { 50: '#fff4ec', 100: '#ffe5d1', 200: '#ffc89e', 300: '#ffa363', 400: '#ff8533', 500: '#f56a14', 600: '#e05510', 700: '#b83f0c' }
+        },
+        fontFamily: { display: ['Fraunces', 'serif'], sans: ['"Inter Tight"', 'system-ui', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'] }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #09090b; color: #d4d4dc; font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .display { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+  .logo-mark { background: linear-gradient(135deg, #f56a14 0%, #ff8533 100%); box-shadow: 0 0 0 1px rgba(245,106,20,0.3), 0 8px 24px -8px rgba(245,106,20,0.5); }
+  .nav-blur { backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px); }
+  .grain::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .prose-legal h2 { font-family: 'Fraunces', serif; color: #fff; font-size: 1.75rem; font-weight: 400; letter-spacing: -0.02em; margin-top: 3rem; margin-bottom: 1rem; scroll-margin-top: 6rem; }
+  .prose-legal h3 { color: #fff; font-size: 1.1rem; font-weight: 500; margin-top: 2rem; margin-bottom: 0.75rem; }
+  .prose-legal p { color: #a6a6b8; line-height: 1.75; margin-bottom: 1.1rem; }
+  .prose-legal ul { color: #a6a6b8; margin-bottom: 1.1rem; padding-left: 1.5rem; }
+  .prose-legal li { margin-bottom: 0.4rem; list-style: none; position: relative; padding-left: 1rem; }
+  .prose-legal li::before { content: "—"; color: #ff8533; position: absolute; left: -0.25rem; }
+  .prose-legal strong { color: #fff; font-weight: 500; }
+  .prose-legal a { color: #ffa363; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .prose-legal a:hover { color: #ff8533; }
+  .toc a { display: block; padding: 0.35rem 0; color: #76768a; font-size: 0.875rem; transition: color 0.2s; border-left: 1px solid transparent; padding-left: 0.75rem; }
+  .toc a:hover { color: #ffa363; border-left-color: #ff8533; }
+  .data-table { border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; margin: 1.5rem 0; }
+  .data-table table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .data-table th { background: rgba(255,255,255,0.03); text-align: left; padding: 0.75rem 1rem; color: #fff; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .data-table td { padding: 0.75rem 1rem; color: #a6a6b8; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+  .data-table tr:last-child td { border-bottom: none; }
+  ::-webkit-scrollbar { width: 10px; } ::-webkit-scrollbar-track { background: #09090b; } ::-webkit-scrollbar-thumb { background: #22222a; border-radius: 10px; }
+</style>
+</head>
+
+<body class="grain relative">
+
+  <header class="sticky top-0 z-40 nav-blur bg-ink-950/70 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="logo-mark w-8 h-8 rounded-md flex items-center justify-center font-display font-semibold text-ink-950 text-[13px]">CS</span>
+        <span class="text-ink-200 font-medium">Sense<span class="text-ember-400">·</span>Optimization</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-ink-300">
+        <a href="index.html#services" class="hover:text-white transition">Services</a>
+        <a href="index.html#pricing" class="hover:text-white transition">Pricing</a>
+        <a href="index.html#faq" class="hover:text-white transition">FAQ</a>
+      </nav>
+      <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-white/10 text-ink-200 text-sm hover:bg-white/5 transition">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to site
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-16 md:py-24">
+
+    <div class="max-w-3xl mb-16">
+      <div class="text-xs uppercase tracking-[0.25em] text-ember-400 font-mono mb-5">Legal</div>
+      <h1 class="display text-5xl md:text-6xl text-white font-light leading-[1.05] mb-6">Privacy Policy</h1>
+      <p class="text-ink-300 leading-relaxed">
+        This policy explains what personal data Sense-Optimization collects, why we collect it, how we use it, and the choices you have. We aim to be clear and honest — if anything is unclear, please reach out.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-6 text-sm text-ink-400 font-mono">
+        <div><span class="text-ink-500">Last updated:</span> <span class="text-ink-200">April 19, 2026</span></div>
+        <div><span class="text-ink-500">Effective:</span> <span class="text-ink-200">April 19, 2026</span></div>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-[220px_1fr] gap-12">
+
+      <aside class="lg:sticky lg:top-24 self-start">
+        <div class="text-xs uppercase tracking-[0.2em] text-ink-500 font-mono mb-3">Contents</div>
+        <nav class="toc">
+          <a href="#who">1. Who we are</a>
+          <a href="#what">2. Data we collect</a>
+          <a href="#how">3. How we use it</a>
+          <a href="#legal-basis">4. Legal basis (GDPR)</a>
+          <a href="#sharing">5. Sharing with third parties</a>
+          <a href="#retention">6. Data retention</a>
+          <a href="#security">7. Security</a>
+          <a href="#rights">8. Your rights</a>
+          <a href="#cookies">9. Cookies</a>
+          <a href="#transfers">10. International transfers</a>
+          <a href="#children">11. Children's privacy</a>
+          <a href="#changes">12. Changes to this policy</a>
+          <a href="#contact">13. Contact</a>
+        </nav>
+      </aside>
+
+      <article class="prose-legal max-w-3xl">
+
+        <h2 id="who">1. Who we are</h2>
+        <p>
+          Sense-Optimization ("<strong>we</strong>", "<strong>us</strong>", "<strong>our</strong>") is the data controller responsible for your personal data in connection with the Sense-Optimization software and website (the "<strong>Service</strong>").
+        </p>
+        <ul>
+          <li><strong>Legal entity:</strong> [COMPANY NAME]</li>
+          <li><strong>Registered address:</strong> [REGISTERED ADDRESS]</li>
+          <li><strong>Registration number:</strong> [REGISTRATION NUMBER]</li>
+          <li><strong>Contact:</strong> <a href="mailto:privacy@sense-optimization.com">privacy@sense-optimization.com</a></li>
+        </ul>
+
+        <h2 id="what">2. Data we collect</h2>
+        <p>
+          We collect the minimum data needed to provide and improve the Service. Here is a complete inventory:
+        </p>
+
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Examples</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Account data</td>
+                <td>Name, email address, hashed password, plan type</td>
+                <td>You, at signup</td>
+              </tr>
+              <tr>
+                <td>Payment data</td>
+                <td>Billing address, last 4 digits of card, transaction ID. Full card numbers are handled by Stripe — we never see or store them.</td>
+                <td>Stripe</td>
+              </tr>
+              <tr>
+                <td>Technical data</td>
+                <td>IP address, browser type, OS, device identifier, timestamps</td>
+                <td>Automatic, when you use the Service</td>
+              </tr>
+              <tr>
+                <td>Telemetry (optional)</td>
+                <td>Anonymous hardware specs, feature usage statistics, crash reports</td>
+                <td>Software, only if you opt in</td>
+              </tr>
+              <tr>
+                <td>Support correspondence</td>
+                <td>Messages you send us, attachments</td>
+                <td>You, when you contact support</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          <strong>We do not collect:</strong> passwords from other services, browsing history outside our site, contents of your files, or biometric data.
+        </p>
+
+        <h2 id="how">3. How we use your data</h2>
+        <p>We use personal data to:</p>
+        <ul>
+          <li>Create and manage your account</li>
+          <li>Process payments, issue invoices, and prevent fraud</li>
+          <li>Deliver the Service and provide customer support</li>
+          <li>Send service-related communications (license activation, security alerts, policy updates)</li>
+          <li>Improve reliability and performance through anonymous telemetry (opt-in only)</li>
+          <li>Comply with legal obligations (tax records, responses to lawful requests)</li>
+        </ul>
+        <p>
+          We do <strong>not</strong> sell your personal data to third parties, and we do <strong>not</strong> use it for advertising or profiling unrelated to the Service.
+        </p>
+
+        <h2 id="legal-basis">4. Legal basis for processing (GDPR)</h2>
+        <p>If you are located in the European Economic Area, UK, or Switzerland, we rely on the following legal bases under the GDPR:</p>
+        <ul>
+          <li><strong>Contract performance</strong> — to deliver the Service you purchased (Art. 6(1)(b))</li>
+          <li><strong>Legal obligation</strong> — for tax, accounting, and regulatory compliance (Art. 6(1)(c))</li>
+          <li><strong>Legitimate interests</strong> — to secure the Service, prevent fraud, and improve product quality (Art. 6(1)(f))</li>
+          <li><strong>Consent</strong> — for optional telemetry and non-essential cookies, which you can withdraw at any time (Art. 6(1)(a))</li>
+        </ul>
+
+        <h2 id="sharing">5. Sharing with third parties</h2>
+        <p>
+          We share personal data only with trusted service providers who process it on our behalf under contractual obligations of confidentiality and security (Data Processing Agreements). Current sub-processors:
+        </p>
+        <ul>
+          <li><strong>Stripe, Inc.</strong> — payment processing (<a href="https://stripe.com/privacy" target="_blank" rel="noopener">privacy policy</a>)</li>
+          <li><strong>[HOSTING PROVIDER — e.g., AWS / Hetzner / OVH]</strong> — infrastructure hosting</li>
+          <li><strong>[EMAIL PROVIDER — e.g., Postmark / SendGrid]</strong> — transactional email delivery</li>
+          <li><strong>[ANALYTICS PROVIDER — e.g., Plausible / none]</strong> — privacy-respecting usage analytics</li>
+        </ul>
+        <p>
+          We may also disclose data if required by law, to enforce our Terms, or to protect the rights, safety, or property of Sense-Optimization, our users, or the public.
+        </p>
+
+        <h2 id="retention">6. Data retention</h2>
+        <p>We keep personal data only as long as necessary:</p>
+        <ul>
+          <li><strong>Account data:</strong> while your account is active, plus 30 days after deletion</li>
+          <li><strong>Billing records:</strong> 7 years, as required by tax law</li>
+          <li><strong>Support tickets:</strong> 2 years after resolution</li>
+          <li><strong>Telemetry data:</strong> aggregated and anonymized after 90 days</li>
+          <li><strong>Server logs:</strong> 30 days</li>
+        </ul>
+
+        <h2 id="security">7. Security</h2>
+        <p>
+          We protect your data with industry-standard measures: TLS 1.2+ for data in transit, encryption at rest for sensitive fields, hashed and salted passwords (bcrypt), principle of least privilege for internal access, audit logs, and regular security reviews.
+        </p>
+        <p>
+          No system is perfectly secure. If we become aware of a personal data breach likely to result in a risk to your rights, we will notify affected users and the competent authority within 72 hours, as required by applicable law.
+        </p>
+
+        <h2 id="rights">8. Your rights</h2>
+        <p>Depending on your jurisdiction (GDPR, UK GDPR, CCPA, and similar laws), you have the right to:</p>
+        <ul>
+          <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
+          <li><strong>Rectify</strong> — correct inaccurate or incomplete data</li>
+          <li><strong>Erase</strong> — request deletion of your data ("right to be forgotten")</li>
+          <li><strong>Restrict</strong> — limit how we process your data</li>
+          <li><strong>Portability</strong> — receive your data in a structured, machine-readable format</li>
+          <li><strong>Object</strong> — object to processing based on legitimate interests</li>
+          <li><strong>Withdraw consent</strong> — at any time, where processing is based on consent</li>
+          <li><strong>Lodge a complaint</strong> — with your local data protection authority</li>
+        </ul>
+        <p>
+          To exercise any of these rights, email <a href="mailto:privacy@sense-optimization.com">privacy@sense-optimization.com</a>. We respond within 30 days and may request identity verification for security.
+        </p>
+        <p>
+          <strong>California residents:</strong> under the CCPA, you have additional rights including the right to know and the right to non-discrimination for exercising your rights. We do not sell personal information as defined by the CCPA.
+        </p>
+
+        <h2 id="cookies">9. Cookies & similar technologies</h2>
+        <p>We use a minimal set of cookies:</p>
+        <ul>
+          <li><strong>Essential cookies</strong> — required for login and security (cannot be disabled)</li>
+          <li><strong>Preference cookies</strong> — remember your settings (theme, language)</li>
+          <li><strong>Analytics cookies</strong> — optional, anonymous usage measurement (only with consent)</li>
+        </ul>
+        <p>
+          You can manage cookie preferences through the cookie banner on first visit, or in your browser settings at any time.
+        </p>
+
+        <h2 id="transfers">10. International data transfers</h2>
+        <p>
+          Your data may be transferred to and processed in countries other than your own, including the United States. When we do so, we rely on appropriate safeguards such as the European Commission's Standard Contractual Clauses (SCCs) and additional technical measures to ensure an equivalent level of protection.
+        </p>
+
+        <h2 id="children">11. Children's privacy</h2>
+        <p>
+          The Service is not intended for persons under 18. We do not knowingly collect personal data from children. If you believe a child has provided us with data, please contact us and we will delete it.
+        </p>
+
+        <h2 id="changes">12. Changes to this policy</h2>
+        <p>
+          We may update this policy from time to time. Material changes will be notified by email to registered users and/or by prominent notice on our website at least 14 days before they take effect. We encourage you to review this page periodically.
+        </p>
+
+        <h2 id="contact">13. Contact & Data Protection Officer</h2>
+        <p>For any privacy-related question or request:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:privacy@sense-optimization.com">privacy@sense-optimization.com</a></li>
+          <li><strong>Postal:</strong> [DPO / PRIVACY CONTACT NAME], [REGISTERED COMPANY ADDRESS]</li>
+          <li><strong>EU representative (if applicable):</strong> [NAME & ADDRESS, per GDPR Art. 27]</li>
+        </ul>
+
+        <div class="mt-16 p-6 rounded-lg border border-ember-500/20 bg-ember-500/5">
+          <div class="flex items-start gap-4">
+            <div class="text-ember-400 flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <p class="text-sm text-ink-300 leading-relaxed m-0">
+              <strong class="text-white">Template notice.</strong> This document is a starting template compliant with common GDPR/CCPA requirements. Replace bracketed placeholders with your actual details and have a qualified attorney review the final version for your specific operations.
+            </p>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/5 bg-ink-950 relative z-10 mt-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+      <div class="flex flex-wrap items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span class="logo-mark w-7 h-7 rounded-md flex items-center justify-center font-display font-semibold text-ink-950 text-xs">CS</span>
+          <span class="text-ink-300 text-sm">© 2026 Sense-Optimization</span>
+        </div>
+        <div class="flex gap-6 text-sm text-ink-400">
+          <a href="terms.html" class="hover:text-white transition">Terms</a>
+          <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+          <a href="refund.html" class="hover:text-white transition">Refund</a>
+          <a href="index.html" class="hover:text-white transition">Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

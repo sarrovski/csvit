@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of Service — Sense-Optimization</title>
+<meta name="description" content="Terms of Service for Sense-Optimization products and services." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: { 950: '#09090b', 900: '#0e0e11', 800: '#17171c', 700: '#22222a', 600: '#2e2e38', 500: '#4a4a57', 400: '#76768a', 300: '#a6a6b8', 200: '#d4d4dc' },
+          ember: { 50: '#fff4ec', 100: '#ffe5d1', 200: '#ffc89e', 300: '#ffa363', 400: '#ff8533', 500: '#f56a14', 600: '#e05510', 700: '#b83f0c' }
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['"Inter Tight"', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #09090b; color: #d4d4dc; font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .display { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+  .logo-mark { background: linear-gradient(135deg, #f56a14 0%, #ff8533 100%); box-shadow: 0 0 0 1px rgba(245,106,20,0.3), 0 8px 24px -8px rgba(245,106,20,0.5); }
+  .nav-blur { backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px); }
+  .grain::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .prose-legal h2 { font-family: 'Fraunces', serif; color: #fff; font-size: 1.75rem; font-weight: 400; letter-spacing: -0.02em; margin-top: 3rem; margin-bottom: 1rem; scroll-margin-top: 6rem; }
+  .prose-legal h3 { color: #fff; font-size: 1.1rem; font-weight: 500; margin-top: 2rem; margin-bottom: 0.75rem; }
+  .prose-legal p { color: #a6a6b8; line-height: 1.75; margin-bottom: 1.1rem; }
+  .prose-legal ul { color: #a6a6b8; margin-bottom: 1.1rem; padding-left: 1.5rem; }
+  .prose-legal li { margin-bottom: 0.4rem; list-style: none; position: relative; padding-left: 1rem; }
+  .prose-legal li::before { content: "—"; color: #ff8533; position: absolute; left: -0.25rem; }
+  .prose-legal strong { color: #fff; font-weight: 500; }
+  .prose-legal a { color: #ffa363; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .prose-legal a:hover { color: #ff8533; }
+  .toc a { display: block; padding: 0.35rem 0; color: #76768a; font-size: 0.875rem; transition: color 0.2s; border-left: 1px solid transparent; padding-left: 0.75rem; }
+  .toc a:hover { color: #ffa363; border-left-color: #ff8533; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #09090b; }
+  ::-webkit-scrollbar-thumb { background: #22222a; border-radius: 10px; }
+</style>
+</head>
+
+<body class="grain relative">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 nav-blur bg-ink-950/70 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="logo-mark w-8 h-8 rounded-md flex items-center justify-center font-display font-semibold text-ink-950 text-[13px]">CS</span>
+        <span class="text-ink-200 font-medium">Sense<span class="text-ember-400">·</span>Optimization</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-ink-300">
+        <a href="index.html#services" class="hover:text-white transition">Services</a>
+        <a href="index.html#pricing" class="hover:text-white transition">Pricing</a>
+        <a href="index.html#faq" class="hover:text-white transition">FAQ</a>
+      </nav>
+      <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-white/10 text-ink-200 text-sm hover:bg-white/5 transition">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to site
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-16 md:py-24">
+
+    <!-- HEADER -->
+    <div class="max-w-3xl mb-16">
+      <div class="text-xs uppercase tracking-[0.25em] text-ember-400 font-mono mb-5">Legal</div>
+      <h1 class="display text-5xl md:text-6xl text-white font-light leading-[1.05] mb-6">Terms of Service</h1>
+      <p class="text-ink-300 leading-relaxed">
+        Please read these terms carefully before using Sense-Optimization products or services. By accessing or using our services, you agree to be bound by these terms.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-6 text-sm text-ink-400 font-mono">
+        <div><span class="text-ink-500">Last updated:</span> <span class="text-ink-200">April 19, 2026</span></div>
+        <div><span class="text-ink-500">Effective:</span> <span class="text-ink-200">April 19, 2026</span></div>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-[220px_1fr] gap-12">
+
+      <!-- TOC -->
+      <aside class="lg:sticky lg:top-24 self-start">
+        <div class="text-xs uppercase tracking-[0.2em] text-ink-500 font-mono mb-3">Contents</div>
+        <nav class="toc">
+          <a href="#acceptance">1. Acceptance of Terms</a>
+          <a href="#description">2. Service Description</a>
+          <a href="#accounts">3. Accounts & Eligibility</a>
+          <a href="#license">4. License & Usage</a>
+          <a href="#payment">5. Payments & Billing</a>
+          <a href="#acceptable">6. Acceptable Use</a>
+          <a href="#ip">7. Intellectual Property</a>
+          <a href="#disclaimer">8. Disclaimer of Warranties</a>
+          <a href="#liability">9. Limitation of Liability</a>
+          <a href="#indemnification">10. Indemnification</a>
+          <a href="#termination">11. Termination</a>
+          <a href="#governing">12. Governing Law</a>
+          <a href="#changes">13. Changes to Terms</a>
+          <a href="#contact">14. Contact</a>
+        </nav>
+      </aside>
+
+      <!-- CONTENT -->
+      <article class="prose-legal max-w-3xl">
+
+        <h2 id="acceptance">1. Acceptance of Terms</h2>
+        <p>
+          These Terms of Service ("<strong>Terms</strong>") form a binding agreement between you ("<strong>User</strong>", "<strong>you</strong>") and Sense-Optimization ("<strong>we</strong>", "<strong>us</strong>", "<strong>our</strong>"), the operator of the Sense-Optimization software and website (collectively, the "<strong>Service</strong>").
+        </p>
+        <p>
+          By creating an account, purchasing a license, downloading our software, or otherwise using the Service, you acknowledge that you have read, understood, and agree to be bound by these Terms and our <a href="privacy.html">Privacy Policy</a>. If you do not agree, you may not use the Service.
+        </p>
+
+        <h2 id="description">2. Service Description</h2>
+        <p>
+          Sense-Optimization provides software tools and related services for system performance tuning and hardware monitoring on Windows operating systems. The Service includes, without limitation:
+        </p>
+        <ul>
+          <li>Process prioritization and CPU affinity management tools</li>
+          <li>Input latency measurement and calibration utilities</li>
+          <li>Hardware monitoring overlays displaying system telemetry (FPS, frametime, CPU/GPU temperature, memory usage)</li>
+          <li>Benchmark reporting and configuration management features</li>
+        </ul>
+        <p>
+          We reserve the right to modify, suspend, or discontinue any feature of the Service at any time, with reasonable notice where practicable.
+        </p>
+
+        <h2 id="accounts">3. Accounts & Eligibility</h2>
+        <h3>3.1 Eligibility</h3>
+        <p>
+          You must be at least 18 years of age, or the age of majority in your jurisdiction, to use the Service. By using the Service, you represent that you meet this requirement and that you have the legal capacity to enter into this agreement.
+        </p>
+        <h3>3.2 Account Security</h3>
+        <p>
+          You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use at <a href="mailto:support@sense-optimization.com">support@sense-optimization.com</a>.
+        </p>
+        <h3>3.3 Accurate Information</h3>
+        <p>
+          You agree to provide accurate, current, and complete information during registration and to keep such information updated. We may suspend or terminate accounts containing inaccurate information.
+        </p>
+
+        <h2 id="license">4. License & Usage</h2>
+        <h3>4.1 License Grant</h3>
+        <p>
+          Subject to your compliance with these Terms and payment of applicable fees, we grant you a limited, non-exclusive, non-transferable, revocable license to install and use the Service on the number of devices specified in your purchased plan, for your personal or internal business use.
+        </p>
+        <h3>4.2 Restrictions</h3>
+        <p>You may not:</p>
+        <ul>
+          <li>Copy, modify, reverse engineer, decompile, or disassemble the Service, except to the extent expressly permitted by applicable law</li>
+          <li>Rent, lease, lend, sell, sublicense, or otherwise transfer your license to any third party</li>
+          <li>Remove or alter any proprietary notices, labels, or marks</li>
+          <li>Use the Service to develop a competing product or service</li>
+          <li>Circumvent, disable, or interfere with security-related features of the Service</li>
+        </ul>
+
+        <h2 id="payment">5. Payments & Billing</h2>
+        <h3>5.1 Fees</h3>
+        <p>
+          Access to certain features of the Service requires payment of fees as described on our <a href="index.html#pricing">pricing page</a>. All fees are quoted in US Dollars (USD) unless otherwise noted and are exclusive of applicable taxes, which will be added at checkout where required.
+        </p>
+        <h3>5.2 Payment Processing</h3>
+        <p>
+          Payments are processed securely by our third-party payment processor, Stripe, Inc. We do not store full payment card details on our servers. By providing payment information, you authorize us (and our payment processor) to charge your designated payment method for the fees associated with your plan.
+        </p>
+        <h3>5.3 Subscription Renewals</h3>
+        <p>
+          Monthly subscriptions renew automatically at the end of each billing cycle until cancelled. You may cancel at any time from your account dashboard; cancellation will take effect at the end of the current billing period. Daily passes are single-use and do not renew.
+        </p>
+        <h3>5.4 Refunds</h3>
+        <p>
+          Refunds are governed by our <a href="refund.html">Refund Policy</a>, which is incorporated by reference into these Terms.
+        </p>
+        <h3>5.5 Price Changes</h3>
+        <p>
+          We may change our fees at any time. For recurring plans, we will provide at least 30 days' advance notice before any price change takes effect on your next renewal.
+        </p>
+
+        <h2 id="acceptable">6. Acceptable Use</h2>
+        <p>You agree not to use the Service to:</p>
+        <ul>
+          <li>Violate any applicable law, regulation, or third-party right</li>
+          <li>Interfere with, disrupt, or damage the Service, our infrastructure, or any user's access</li>
+          <li>Attempt to gain unauthorized access to any part of the Service or related systems</li>
+          <li>Transmit any malware, virus, or other harmful code</li>
+          <li>Use automated means (scrapers, bots) to access the Service without our prior written permission</li>
+          <li>Misrepresent your identity or affiliation with any person or entity</li>
+        </ul>
+        <p>
+          We reserve the right to investigate suspected violations and to suspend or terminate offending accounts without prior notice where necessary to protect the Service or other users.
+        </p>
+
+        <h2 id="ip">7. Intellectual Property</h2>
+        <p>
+          The Service, including all software, designs, text, graphics, trademarks, and other content, is owned by Sense-Optimization or its licensors and is protected by copyright, trademark, and other intellectual property laws. Except for the limited license granted in Section 4, no rights are transferred to you.
+        </p>
+        <p>
+          Any feedback, suggestions, or ideas you provide regarding the Service may be used by us without obligation to you.
+        </p>
+
+        <h2 id="disclaimer">8. Disclaimer of Warranties</h2>
+        <p>
+          <strong>The Service is provided "as is" and "as available", without warranties of any kind, whether express, implied, or statutory.</strong> To the fullest extent permitted by law, we disclaim all warranties including merchantability, fitness for a particular purpose, non-infringement, and any warranties arising from course of dealing or usage of trade.
+        </p>
+        <p>
+          We do not warrant that the Service will be uninterrupted, error-free, or achieve any specific performance result on your hardware. Performance improvements depend on numerous factors including your system configuration, workload, and third-party software.
+        </p>
+
+        <h2 id="liability">9. Limitation of Liability</h2>
+        <p>
+          <strong>To the maximum extent permitted by law</strong>, in no event will Sense-Optimization, its directors, employees, or agents be liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, data loss, or business interruption, arising out of or relating to your use of the Service.
+        </p>
+        <p>
+          Our total aggregate liability for any claim arising out of or relating to these Terms or the Service shall not exceed the greater of (i) the amount you paid us in the twelve (12) months preceding the event giving rise to the claim, or (ii) one hundred US dollars (USD 100).
+        </p>
+
+        <h2 id="indemnification">10. Indemnification</h2>
+        <p>
+          You agree to indemnify, defend, and hold harmless Sense-Optimization and its affiliates from and against any claims, damages, liabilities, and expenses (including reasonable attorneys' fees) arising out of your use of the Service, your violation of these Terms, or your violation of any third-party right.
+        </p>
+
+        <h2 id="termination">11. Termination</h2>
+        <p>
+          You may terminate your account at any time from your account settings or by contacting <a href="mailto:support@sense-optimization.com">support@sense-optimization.com</a>.
+        </p>
+        <p>
+          We may suspend or terminate your access immediately, without notice, if you breach these Terms, if required by law, or to protect the security of the Service or other users. Upon termination, your license ends and you must cease all use of the Service. Sections 7 through 10, 12, and 14 survive termination.
+        </p>
+
+        <h2 id="governing">12. Governing Law & Dispute Resolution</h2>
+        <p>
+          These Terms are governed by the laws of <strong>[YOUR JURISDICTION — e.g., the State of Delaware, USA / France / etc.]</strong>, without regard to its conflict-of-laws rules. Any dispute arising out of or relating to these Terms shall be resolved exclusively in the courts located in <strong>[YOUR CITY / JURISDICTION]</strong>, and you consent to personal jurisdiction there.
+        </p>
+        <p>
+          If you reside in the European Union, you retain the protections of mandatory consumer laws of your country of residence.
+        </p>
+
+        <h2 id="changes">13. Changes to Terms</h2>
+        <p>
+          We may update these Terms from time to time. Material changes will be notified by email to registered users and/or by prominent notice on our website at least 14 days before they take effect. Your continued use of the Service after the effective date constitutes acceptance of the updated Terms.
+        </p>
+
+        <h2 id="contact">14. Contact</h2>
+        <p>
+          Questions about these Terms? Contact us at:
+        </p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:legal@sense-optimization.com">legal@sense-optimization.com</a></li>
+          <li><strong>Support:</strong> <a href="mailto:support@sense-optimization.com">support@sense-optimization.com</a></li>
+          <li><strong>Postal address:</strong> [YOUR REGISTERED COMPANY ADDRESS]</li>
+          <li><strong>Company registration:</strong> [COMPANY NAME, REGISTRATION NUMBER, JURISDICTION]</li>
+        </ul>
+
+        <div class="mt-16 p-6 rounded-lg border border-ember-500/20 bg-ember-500/5">
+          <div class="flex items-start gap-4">
+            <div class="text-ember-400 flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <p class="text-sm text-ink-300 leading-relaxed m-0">
+              <strong class="text-white">Template notice.</strong> This document is a starting template based on standard SaaS practices. Before publishing, replace bracketed placeholders with your actual details and have the final version reviewed by a qualified attorney in your jurisdiction.
+            </p>
+          </div>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 bg-ink-950 relative z-10 mt-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+      <div class="flex flex-wrap items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span class="logo-mark w-7 h-7 rounded-md flex items-center justify-center font-display font-semibold text-ink-950 text-xs">CS</span>
+          <span class="text-ink-300 text-sm">© 2026 Sense-Optimization</span>
+        </div>
+        <div class="flex gap-6 text-sm text-ink-400">
+          <a href="terms.html" class="hover:text-white transition">Terms</a>
+          <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+          <a href="refund.html" class="hover:text-white transition">Refund</a>
+          <a href="index.html" class="hover:text-white transition">Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
