@@ -35,7 +35,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <div aria-hidden className="pointer-events-none fixed inset-0 ember-glow z-0" />
         <Header />
         <main id="content" className="relative z-10">
           {children}

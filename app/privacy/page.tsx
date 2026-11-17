@@ -64,9 +64,11 @@ export default function PrivacyPage() {
         <li>
           <strong>Registered address:</strong> {site.address}
         </li>
-        <li>
-          <strong>Registration number:</strong> {site.registration}
-        </li>
+        {site.registration && (
+          <li>
+            <strong>Registration number:</strong> {site.registration}
+          </li>
+        )}
         <li>
           <strong>Contact:</strong> <Email />
         </li>

@@ -272,9 +272,11 @@ export default function TermsPage() {
         <li>
           <strong>Postal address:</strong> {site.address}
         </li>
-        <li>
-          <strong>Company registration:</strong> {site.registration}
-        </li>
+        {site.registration && (
+          <li>
+            <strong>Company registration:</strong> {site.registration}
+          </li>
+        )}
       </ul>
     </LegalPage>
   );

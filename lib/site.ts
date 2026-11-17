@@ -15,8 +15,11 @@ export const site = {
   legalEntity: "[LEGAL BUSINESS NAME]",
   /** TODO: registered business address, as shown in your Stripe public details. */
   address: "[REGISTERED BUSINESS ADDRESS]",
-  /** TODO: company registration number + jurisdiction, or remove if you are a sole trader without one. */
-  registration: "[REGISTRATION NUMBER, JURISDICTION]",
+  /**
+   * Company registration number + jurisdiction. Optional: sole traders without one
+   * can leave this as "" and it is hidden everywhere.
+   */
+  registration: "" as string,
   /** TODO: governing law for the Terms (e.g. "the State of Delaware, USA"). */
   governingLaw: "[GOVERNING LAW JURISDICTION]",
   /** TODO: city/court where disputes are heard. */
