@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/LegalPage";
-import { mailto, site } from "@/lib/site";
+import { addressSuffix, mailto, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Refund & Cancellation Policy",
@@ -218,7 +218,7 @@ export default function RefundsPage() {
           <strong>Response time:</strong> {site.supportResponseTime}
         </li>
         <li>
-          <strong>Operator:</strong> {site.legalEntity}, {site.address}
+          <strong>Operator:</strong> {site.legalEntity}{addressSuffix}
         </li>
       </ul>
     </LegalPage>
