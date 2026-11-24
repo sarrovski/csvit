@@ -26,11 +26,11 @@ export const site = {
   venue: "[CITY / COURT JURISDICTION]",
 
   /**
-   * TODO: this mailbox must actually receive mail. As of this change, neither
-   * sense-optimization.vercel.app nor sense-optimization.com has MX records,
-   * and a *.vercel.app subdomain can never receive email.
+   * Used for every contact link on the site (support, billing, refunds, privacy, sales).
+   * TODO: sense-optimization.com is not registered yet and has no MX records, so mail to
+   * this address bounces until the domain is bought and email forwarding is set up.
    */
-  supportEmail: "support@sense-optimization.vercel.app",
+  supportEmail: "support@sense-optimization.com",
 
   /** TODO: must match Settings → Public details → Statement descriptor in Stripe. */
   statementDescriptor: "SENSE-OPTIMIZATION",
