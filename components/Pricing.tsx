@@ -1,17 +1,20 @@
 import Link from "next/link";
-import { deliverables, mailto, plans, site, type Plan } from "@/lib/site";
+import { deliverables, plans, site, type Plan } from "@/lib/site";
+import CheckoutNotice from "./CheckoutNotice";
 
 function BuyButton({ plan }: { plan: Plan }) {
-  // Stripe Payment Link when configured; otherwise a pre-filled email so the button never dead-ends.
-  const href = plan.checkoutUrl || mailto(`Purchase: ${plan.name}`);
+  // Plain form post: the server creates a Stripe Checkout Session and redirects to it.
   return (
-    <a
-      href={href}
-      className={`${plan.featured ? "btn-primary font-medium" : "btn-ghost text-white"} inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-center text-[14px]`}
-      aria-describedby={`${plan.id}-billing ${plan.id}-consent`}
-    >
-      {plan.cta}
-    </a>
+    <form action="/api/checkout" method="POST">
+      <input type="hidden" name="plan" value={plan.id} />
+      <button
+        type="submit"
+        className={`${plan.featured ? "btn-primary font-medium" : "btn-ghost text-white"} inline-flex w-full cursor-pointer items-center justify-center rounded-full px-5 py-3 text-center text-[14px]`}
+        aria-describedby={`${plan.id}-billing ${plan.id}-consent`}
+      >
+        {plan.cta}
+      </button>
+    </form>
   );
 }
 
@@ -28,7 +31,7 @@ function PlanColumn({ plan }: { plan: Plan }) {
       <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-ink-400">{plan.cadenceLabel}</p>
 
       <p className="mt-8 flex items-baseline gap-2">
-        <span className="display text-6xl font-light text-white tabular">{plan.price}</span>
+        <span className="display text-6xl text-white tabular">{plan.price}</span>
         <span className="text-sm text-ink-400">{plan.priceSuffix}</span>
       </p>
       <p className="mt-4 text-[14px] leading-relaxed text-ink-300">{plan.blurb}</p>
@@ -75,7 +78,7 @@ export default function Pricing() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow mb-5">Pricing</p>
-          <h2 id="pricing-heading" className="display text-[2.4rem] leading-[1.05] sm:text-5xl md:text-6xl font-light text-white">
+          <h2 id="pricing-heading" className="display text-[2.4rem] leading-[1.05] sm:text-5xl md:text-6xl text-white">
             One suite. <span className="text-ink-400">Three ways to own it.</span>
           </h2>
           <p className="mt-6 text-ink-300">
@@ -84,6 +87,7 @@ export default function Pricing() {
           </p>
         </div>
 
+        <div className="mt-12"><CheckoutNotice /></div>
         <div className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-white/[0.08] ring-1 ring-white/[0.08] md:grid-cols-3">
           {plans.map((plan) => (
             <PlanColumn key={plan.id} plan={plan} />

@@ -53,7 +53,10 @@ export type Plan = {
   blurb: string;
   features: string[];
   cta: string;
-  checkoutUrl: string | undefined;
+  /** Charged amount in US cents. Checkout always uses this server-side value. */
+  amountCents: number;
+  /** "subscription" bills every month until cancelled; "payment" is a one-time charge. */
+  mode: "payment" | "subscription";
   featured?: boolean;
 };
 
@@ -86,7 +89,8 @@ export const plans: Plan[] = [
       "License for 1 device",
     ],
     cta: "Buy 24-hour pass: $4",
-    checkoutUrl: process.env.NEXT_PUBLIC_STRIPE_LINK_BASIC,
+    amountCents: 400,
+    mode: "payment",
   },
   {
     id: "pro",
@@ -106,7 +110,8 @@ export const plans: Plan[] = [
       "Licenses for up to 3 devices",
     ],
     cta: "Subscribe: $19/month",
-    checkoutUrl: process.env.NEXT_PUBLIC_STRIPE_LINK_PRO,
+    amountCents: 1900,
+    mode: "subscription",
     featured: true,
   },
   {
@@ -127,6 +132,9 @@ export const plans: Plan[] = [
       "Licenses for up to 5 devices",
     ],
     cta: "Buy lifetime license: $249",
-    checkoutUrl: process.env.NEXT_PUBLIC_STRIPE_LINK_ELITE,
+    amountCents: 24900,
+    mode: "payment",
   },
 ];
+
+export const getPlan = (id: unknown) => plans.find((p) => p.id === id);

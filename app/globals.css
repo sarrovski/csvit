@@ -22,9 +22,9 @@
   --color-ember-600: #e05510;
   --color-ember-700: #b83f0c;
 
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-sans: var(--font-inter-tight), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-display: var(--font-archivo), system-ui, sans-serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
 html {
@@ -37,7 +37,6 @@ body {
   color: var(--color-ink-200);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "ss01", "cv11";
 }
 
 ::selection { background: rgba(255, 133, 51, 0.3); color: #fff; }
@@ -144,11 +143,13 @@ body {
   color: #fff;
 }
 
+/* Expanded, tightly tracked grotesk for headlines */
 .display {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-variation-settings: "opsz" 144, "SOFT" 30;
-  letter-spacing: -0.025em;
+  font-stretch: 118%;
+  font-weight: 560;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
 }
 
 .eyebrow {
@@ -163,9 +164,10 @@ body {
 .prose-legal h2 {
   font-family: var(--font-display);
   color: #fff;
-  font-size: 1.75rem;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-size: 1.6rem;
+  font-weight: 560;
+  font-stretch: 112%;
+  letter-spacing: -0.03em;
   margin-top: 3rem;
   margin-bottom: 1rem;
   scroll-margin-top: 6rem;
