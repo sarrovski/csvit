@@ -67,7 +67,6 @@ export async function POST(req: NextRequest) {
           unit_amount: purchase.amountCents,
           product_data: {
             name: `${site.name}: ${purchase.name}`,
-            description: purchase.billing,
             metadata: purchase.metadata,
           },
         },
@@ -84,7 +83,7 @@ export async function POST(req: NextRequest) {
     automatic_tax: { enabled: process.env.STRIPE_AUTOMATIC_TAX === "true" },
     custom_text: {
       submit: {
-        message: `${purchase.billing} By paying you agree to our Terms (${site.url}/terms) and Refund Policy (${site.url}/refunds).`,
+        message: `By paying you agree to our Terms (${site.url}/terms) and Refund Policy (${site.url}/refunds).`,
       },
     },
   };
