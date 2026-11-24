@@ -23,7 +23,7 @@ const principles = [
   {
     n: "03",
     title: "Plain pricing",
-    body: "A one-time day pass, a monthly plan you can cancel anytime, or a lifetime license. The billing terms are written next to every button, and refunds are in a policy you can actually read.",
+    body: "One payment, never a subscription. Pick a pass from a day to a lifetime, or size your own. The billing terms are written next to every button, and refunds are in a policy you can actually read.",
   },
   {
     n: "04",
@@ -177,7 +177,7 @@ export default function AboutPage() {
           <h2 className="display text-4xl sm:text-6xl text-white">
             See it on <span className="text-ink-400">your machine.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-md text-ink-300">Start with a $4 day pass, or go monthly or lifetime.</p>
+          <p className="mx-auto mt-6 max-w-md text-ink-300">One-time passes from $4. No subscriptions, nothing renews.</p>
           <Link
             href="/#pricing"
             className="btn-primary mt-10 inline-flex items-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium"

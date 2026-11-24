@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s · Sense Optimization",
   },
   description:
-    "Performance tuning and hardware-monitoring overlay software for Windows. Daily pass, monthly subscription, or lifetime license.",
+    "Performance tuning and hardware-monitoring overlay software for Windows. One-time passes from a day to a lifetime. No subscriptions.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

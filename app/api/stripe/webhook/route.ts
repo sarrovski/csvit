@@ -28,24 +28,19 @@ export async function POST(req: NextRequest) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;
-      // TODO: deliver the product here: generate a license key for
-      // session.metadata.plan and email it with the download link to
-      // session.customer_details.email.
+      // TODO: deliver the product here: generate a license key valid for
+      // session.metadata.days ("lifetime" or a number) on session.metadata.devices
+      // devices, and email it with the download link to session.customer_details.email.
       console.info("[webhook] purchase completed", {
         session: session.id,
         plan: session.metadata?.plan,
+        days: session.metadata?.days,
+        devices: session.metadata?.devices,
         email: session.customer_details?.email,
         amount: session.amount_total,
       });
       break;
     }
-    case "customer.subscription.deleted":
-      // TODO: revoke Pro access for this subscription's license.
-      console.info("[webhook] subscription ended", { subscription: event.data.object.id });
-      break;
-    case "invoice.payment_failed":
-      console.warn("[webhook] renewal payment failed", { invoice: event.data.object.id });
-      break;
     default:
       break;
   }

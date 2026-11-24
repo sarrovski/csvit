@@ -19,7 +19,7 @@ const columns = [
     title: "Legal",
     links: [
       { href: "/terms", label: "Terms of Service" },
-      { href: "/refunds", label: "Refund & Cancellation" },
+      { href: "/refunds", label: "Refund Policy" },
       { href: "/privacy", label: "Privacy Policy" },
     ],
   },

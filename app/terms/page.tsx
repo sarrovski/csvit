@@ -49,7 +49,7 @@ export default function TermsPage() {
       <p>
         By creating an account, purchasing a license, downloading our software, or otherwise using the
         Service, you acknowledge that you have read, understood, and agree to be bound by these Terms, our{" "}
-        <Link href="/refunds">Refund &amp; Cancellation Policy</Link>, and our{" "}
+        <Link href="/refunds">Refund Policy</Link>, and our{" "}
         <Link href="/privacy">Privacy Policy</Link>. If you do not agree, you may not use the Service.
       </p>
 
@@ -121,46 +121,44 @@ export default function TermsPage() {
       <p>
         Fees are listed on our <Link href="/#pricing">pricing page</Link>. All fees are quoted in US Dollars
         (USD) and are exclusive of applicable taxes, which are calculated and shown at checkout before you
-        pay. We currently offer:
+        pay. Every plan is a <strong>single one-time payment</strong>:
       </p>
       <ul>
         <li>
-          <strong>Basic (24-hour pass):</strong> a one-time charge for 24 hours of access starting at
-          activation. It does not renew.
+          <strong>Time-limited passes</strong> (Day, Week, Month, Quarter and Custom passes): one charge for a
+          fixed period of access, from 24 hours up to 365 days, starting when you activate the pass. When the
+          period ends, access stops. Nothing renews.
         </li>
         <li>
-          <strong>Pro (monthly subscription):</strong> a recurring charge billed every month on the same
-          calendar day as your first payment, until you cancel.
-        </li>
-        <li>
-          <strong>Elite (lifetime license):</strong> a single one-time payment with no recurring charges.
+          <strong>Lifetime:</strong> one charge for permanent access, including future feature updates.
         </li>
       </ul>
+      <p>
+        The number of devices included is stated for each plan at checkout. Custom pass prices are calculated
+        from the duration and number of devices you choose and shown before you pay.
+      </p>
       <h3>5.2 Payment Processing</h3>
       <p>
         Payments are processed securely by our third-party payment processor, Stripe, Inc. We do not store
         full payment card details on our servers. By providing payment information, you authorize us (and our
-        payment processor) to charge your designated payment method for the fees associated with your plan,
-        including recurring charges for subscription plans. Charges appear on your statement as{" "}
+        payment processor) to charge your designated payment method once for the plan you select. We do not
+        store your card for future charges. Charges appear on your statement as{" "}
         <strong>{site.statementDescriptor}</strong>.
       </p>
-      <h3>5.3 Subscription Renewals and Cancellation</h3>
+      <h3>5.3 No Subscriptions or Automatic Renewals</h3>
       <p>
-        Monthly subscriptions renew automatically at the end of each billing cycle until cancelled. You can
-        cancel at any time from your account dashboard or by emailing <Email />. Cancellation takes effect at
-        the end of the current billing period, and you will not be charged again. Daily passes and lifetime
-        licenses are one-time purchases and never renew.
+        We do not offer subscriptions. No plan renews automatically, and you will never be charged again
+        without making a new purchase yourself. There is nothing to cancel. To extend access, buy another pass.
       </p>
       <h3>5.4 Refunds</h3>
       <p>
-        Refunds are governed by our <Link href="/refunds">Refund &amp; Cancellation Policy</Link>, which is
+        Refunds are governed by our <Link href="/refunds">Refund Policy</Link>, which is
         incorporated by reference into these Terms.
       </p>
       <h3>5.5 Price Changes</h3>
       <p>
-        We may change our fees at any time. For recurring plans, we will provide at least 30 days&rsquo;
-        advance notice by email before any price change takes effect on your next renewal, giving you the
-        opportunity to cancel first.
+        We may change our fees at any time. Price changes never affect a purchase you have already made: the
+        price you paid at checkout is final for that pass.
       </p>
 
       <h2 id="acceptable">6. Acceptable Use</h2>
