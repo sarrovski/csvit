@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  axes: ["opsz", "SOFT"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tight", display: "swap" });
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", display: "swap" });
+// Archivo: one grotesk family; its width axis gives expanded, engineered headlines.
+const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-archivo", display: "swap" });
+const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-plex-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -27,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${plexMono.variable}`}>
       <body className="grain relative overflow-x-hidden">
         <a
           href="#content"

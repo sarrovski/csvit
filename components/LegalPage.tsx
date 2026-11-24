@@ -12,7 +12,7 @@ export default function LegalPage({ title, intro, toc, children }: Props) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-14 md:py-24">
       <header className="max-w-3xl mb-12 md:mb-16">
         <p className="text-xs uppercase tracking-[0.25em] text-ember-400 font-mono mb-5">Legal</p>
-        <h1 className="display text-4xl sm:text-5xl md:text-6xl text-white font-light leading-[1.05] mb-6">
+        <h1 className="display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.05] mb-6">
           {title}
         </h1>
         <div className="text-ink-300 leading-relaxed">{intro}</div>

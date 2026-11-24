@@ -127,7 +127,7 @@ function SectionHeading({ eyebrow, title, muted }: { eyebrow: string; title: str
   return (
     <div className="max-w-3xl">
       <p className="eyebrow mb-5">{eyebrow}</p>
-      <h2 className="display text-[2.4rem] leading-[1.05] sm:text-5xl md:text-6xl font-light text-white">
+      <h2 className="display text-[2.4rem] leading-[1.05] sm:text-5xl md:text-6xl text-white">
         {title} <span className="text-ink-400">{muted}</span>
       </h2>
     </div>
@@ -147,10 +147,10 @@ export default function Home() {
           </p>
 
           <h1
-            className="display rise mx-auto mt-8 max-w-4xl text-[3rem] leading-[0.98] sm:text-7xl lg:text-[6.25rem] font-light text-white"
+            className="display rise mx-auto mt-8 max-w-5xl text-[2.6rem] sm:text-6xl lg:text-[5.25rem] text-white"
             style={{ animationDelay: ".12s" }}
           >
-            Every millisecond, <span className="italic text-ember-300">accounted&nbsp;for.</span>
+            Every millisecond, <span className="text-ink-400">accounted&nbsp;for.</span>
           </h1>
 
           <p className="rise mx-auto mt-7 max-w-xl text-base sm:text-lg leading-relaxed text-ink-300" style={{ animationDelay: ".22s" }}>
@@ -179,7 +179,7 @@ export default function Home() {
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col-reverse items-center bg-ink-950 py-7 sm:py-9">
                 <dt className="mt-2 eyebrow">{s.label}</dt>
-                <dd className="display text-4xl sm:text-5xl font-light text-white tabular">{s.value}</dd>
+                <dd className="display text-4xl sm:text-5xl text-white tabular">{s.value}</dd>
               </div>
             ))}
           </dl>
@@ -206,7 +206,7 @@ export default function Home() {
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ember-300">
                     0{i + 1} · {c.kicker}
                   </p>
-                  <h3 className="display mt-4 text-3xl sm:text-4xl font-light leading-tight text-white">{c.title}</h3>
+                  <h3 className="display mt-4 text-3xl sm:text-4xl leading-tight text-white">{c.title}</h3>
                   <p className="mt-5 max-w-md leading-relaxed text-ink-300">{c.body}</p>
                   <ul className="mt-8 max-w-md border-t border-white/[0.07]">
                     {c.points.map((p) => (
@@ -249,7 +249,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <div>
             <p className="eyebrow mb-5">FAQ</p>
-            <h2 id="faq-heading" className="display text-4xl sm:text-5xl font-light leading-tight text-white">
+            <h2 id="faq-heading" className="display text-4xl sm:text-5xl leading-tight text-white">
               Questions, <span className="text-ink-400">answered.</span>
             </h2>
             <p className="mt-6 max-w-sm text-ink-300 leading-relaxed">
@@ -281,8 +281,8 @@ export default function Home() {
       <section className="relative overflow-hidden border-t border-white/[0.06] py-28 md:py-40">
         <div aria-hidden className="horizon pointer-events-none absolute inset-0 opacity-80" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="display text-5xl sm:text-6xl md:text-7xl font-light leading-[1] text-white">
-            Measure first. <span className="italic text-ember-300">Then tune.</span>
+          <h2 className="display text-5xl sm:text-6xl md:text-7xl leading-[1] text-white">
+            Measure first. <span className="text-ink-400">Then tune.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-md text-ink-300">Install, benchmark, tune, verify, all within an hour.</p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
