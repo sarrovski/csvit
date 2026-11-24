@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
-import { mailto, site } from "@/lib/site";
+import { mailto, operatorName, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About us",
   description:
-    "Sense-Optimization builds Windows performance software that measures before it changes anything, keeps every change reversible, and proves the result.",
+    "Sense Optimization builds Windows performance software that measures before it changes anything, keeps every change reversible, and proves the result.",
 };
 
 const principles = [
@@ -142,8 +142,7 @@ export default function AboutPage() {
             <div>
               <h2 id="company-heading" className="eyebrow mb-4">The company</h2>
               <p className="text-[15px] leading-relaxed text-ink-300">
-                <span className="text-white">{site.name}</span> is operated by{" "}
-                <span className="text-white">{site.legalEntity}</span>, {site.address}.
+                Operated by <span className="text-white">{operatorName}</span>, {site.address}.
                 {site.registration && <> Registration: {site.registration}.</>}
               </p>
               <p className="mt-4 text-[14px] text-ink-400">

@@ -8,11 +8,15 @@
  */
 
 export const site = {
-  name: "Sense-Optimization",
+  name: "Sense Optimization",
   url: "https://sense-optimization.vercel.app",
 
-  /** TODO: the legal name registered with Stripe (sole trader name, LLC, SAS, Ltd…). */
-  legalEntity: "[LEGAL BUSINESS NAME]",
+  /**
+   * Business name shown as the operator on the site. Must match the business name in your
+   * Stripe account. If you are a sole trader, Stripe and French law (mentions légales)
+   * expect your own legal name here, optionally "trading as" the brand.
+   */
+  legalEntity: "Sense Optimization" as string,
   /** TODO: registered business address, as shown in your Stripe public details. */
   address: "[REGISTERED BUSINESS ADDRESS]",
   /**
@@ -38,6 +42,10 @@ export const site = {
   supportResponseTime: "within 24 hours on business days",
   legalLastUpdated: "November 17, 2026",
 } as const;
+
+/** "Legal name, trading as Brand", or just the name when both are the same. */
+export const operatorName =
+  site.legalEntity === site.name ? site.name : `${site.legalEntity}, trading as ${site.name}`;
 
 export const mailto = (subject?: string) =>
   `mailto:${site.supportEmail}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`;
@@ -65,7 +73,7 @@ export type Plan = {
  * TODO: confirm this matches your actual fulfilment flow.
  */
 export const deliverables = [
-  "Sense-Optimization desktop app for Windows 10 (21H2+) and Windows 11, x64",
+  "Sense Optimization desktop app for Windows 10 (21H2+) and Windows 11, x64",
   "License key and download link emailed to you immediately after payment",
   "Stripe receipt emailed for every charge",
   "No physical goods are shipped. Everything is delivered digitally.",

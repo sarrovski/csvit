@@ -5,7 +5,7 @@ import { mailto, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Refund & Cancellation Policy",
-  description: "How refunds and subscription cancellations work for Sense-Optimization plans.",
+  description: "How refunds and subscription cancellations work for Sense Optimization plans.",
 };
 
 const toc = [

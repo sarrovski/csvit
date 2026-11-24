@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/LegalPage";
-import { mailto, site } from "@/lib/site";
+import { mailto, operatorName, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "The terms that govern your use of Sense-Optimization software and services.",
+  description: "The terms that govern your use of Sense Optimization software and services.",
 };
 
 const toc = [
@@ -42,8 +42,7 @@ export default function TermsPage() {
       <h2 id="acceptance">1. Acceptance of Terms</h2>
       <p>
         These Terms of Service (&ldquo;<strong>Terms</strong>&rdquo;) form a binding agreement between you
-        (&ldquo;<strong>User</strong>&rdquo;, &ldquo;<strong>you</strong>&rdquo;) and {site.legalEntity}, trading
-        as {site.name} (&ldquo;<strong>we</strong>&rdquo;, &ldquo;<strong>us</strong>&rdquo;,
+        (&ldquo;<strong>User</strong>&rdquo;, &ldquo;<strong>you</strong>&rdquo;) and {operatorName} (&ldquo;<strong>we</strong>&rdquo;, &ldquo;<strong>us</strong>&rdquo;,
         &ldquo;<strong>our</strong>&rdquo;), the operator of the {site.name} software and website (collectively,
         the &ldquo;<strong>Service</strong>&rdquo;).
       </p>
