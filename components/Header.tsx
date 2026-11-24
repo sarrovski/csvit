@@ -6,6 +6,7 @@ const nav = [
   { href: "/#method", label: "Method" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/about", label: "About" },
 ];
 
 export default function Header() {
