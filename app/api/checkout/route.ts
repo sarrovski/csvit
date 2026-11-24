@@ -66,7 +66,9 @@ export async function POST(req: NextRequest) {
           currency: "usd",
           unit_amount: purchase.amountCents,
           product_data: {
-            name: `${site.name}: ${purchase.name}`,
+            // Stripe requires a name; show only the business name, not what was bought.
+            // The plan details stay in metadata for fulfilment.
+            name: site.name,
             metadata: purchase.metadata,
           },
         },
@@ -79,13 +81,7 @@ export async function POST(req: NextRequest) {
     payment_intent_data: { metadata: purchase.metadata },
     customer_creation: "always",
     billing_address_collection: "auto",
-    allow_promotion_codes: true,
     automatic_tax: { enabled: process.env.STRIPE_AUTOMATIC_TAX === "true" },
-    custom_text: {
-      submit: {
-        message: `By paying you agree to our Terms (${site.url}/terms) and Refund Policy (${site.url}/refunds).`,
-      },
-    },
   };
 
   try {
