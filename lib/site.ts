@@ -36,8 +36,8 @@ export const site = {
    */
   supportEmail: "support@sense-optimization.com",
 
-  /** TODO: must match Settings → Public details → Statement descriptor in Stripe. */
-  statementDescriptor: "SENSE-OPTIMIZATION",
+  /** Must match Settings → Public details → Statement descriptor in Stripe. */
+  statementDescriptor: "SENSE OPTIMIZATION",
 
   supportResponseTime: "within 24 hours on business days",
   legalLastUpdated: "November 17, 2026",
