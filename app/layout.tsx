@@ -12,8 +12,8 @@ const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], var
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Sense-Optimization: Elevate Your System Performance",
-    template: "%s · Sense-Optimization",
+    default: "Sense Optimization: Elevate Your System Performance",
+    template: "%s · Sense Optimization",
   },
   description:
     "Performance tuning and hardware-monitoring overlay software for Windows. Daily pass, monthly subscription, or lifetime license.",

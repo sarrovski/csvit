@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/LegalPage";
-import { mailto, site } from "@/lib/site";
+import { mailto, operatorName, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "What personal data Sense-Optimization collects, why, and the choices you have.",
+  description: "What personal data Sense Optimization collects, why, and the choices you have.",
 };
 
 const toc = [
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
     >
       <h2 id="who">1. Who we are</h2>
       <p>
-        {site.legalEntity}, trading as {site.name} (&ldquo;<strong>we</strong>&rdquo;,
+        {operatorName} (&ldquo;<strong>we</strong>&rdquo;,
         &ldquo;<strong>us</strong>&rdquo;, &ldquo;<strong>our</strong>&rdquo;), is the data controller
         responsible for your personal data in connection with the {site.name} software and website (the
         &ldquo;<strong>Service</strong>&rdquo;).

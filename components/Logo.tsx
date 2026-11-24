@@ -9,7 +9,7 @@ export function LogoMark({ className = "h-6 w-auto" }: { className?: string }) {
 
 export default function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2.5" aria-label="Sense-Optimization home">
+    <Link href="/" className="flex items-center gap-2.5" aria-label="Sense Optimization home">
       <LogoMark />
       <span className="text-[15px] font-medium tracking-tight text-white">
         Sense<span className="text-ink-400 font-normal">Optimization</span>

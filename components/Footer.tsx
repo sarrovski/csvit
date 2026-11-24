@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { mailto, site } from "@/lib/site";
+import { mailto, operatorName, site } from "@/lib/site";
 
 const columns = [
   {
@@ -75,8 +75,7 @@ export default function Footer() {
         {/* Business identity notice */}
         <div className="mt-14 border-t border-white/[0.06] pt-8 grid gap-6 text-[12px] leading-relaxed text-ink-400 md:grid-cols-2">
           <p>
-            <span className="text-ink-200">{site.name}</span> is a software product operated by{" "}
-            <span className="text-ink-200">{site.legalEntity}</span>, {site.address}.
+            Operated by <span className="text-ink-200">{operatorName}</span>, {site.address}.
             {site.registration && <> Registration: {site.registration}.</>}
           </p>
           <p>
