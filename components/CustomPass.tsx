@@ -98,18 +98,20 @@ export default function CustomPass() {
             ends, nothing renews.
           </p>
 
-          <form action="/api/checkout" method="POST" className="mt-5">
-            <input type="hidden" name="plan" value="custom" />
+          {/* Rendered inside the shared checkout form in Pricing (which also carries the email). */}
+          <div className="mt-5">
             <input type="hidden" name="days" value={days} />
             <input type="hidden" name="devices" value={devices} />
             <button
               type="submit"
-              aria-describedby={`${ids.billing} ${ids.consent}`}
+              name="plan"
+              value="custom"
+              aria-describedby={`${ids.billing} ${ids.consent} checkout-email-hint`}
               className="btn-primary inline-flex w-full cursor-pointer items-center justify-center rounded-full px-5 py-3 text-[14px] font-medium"
             >
               Buy Custom Pass: ${cents / 100}
             </button>
-          </form>
+          </div>
           <p id={ids.consent} className="mt-3 text-center text-[11px] leading-relaxed text-ink-400">
             By purchasing you agree to the{" "}
             <Link href="/terms" className="underline underline-offset-2 hover:text-white">Terms</Link> and{" "}

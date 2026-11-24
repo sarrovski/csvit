@@ -52,6 +52,12 @@ export async function POST(req: NextRequest) {
   if (!purchase) {
     return NextResponse.json({ error: "Unknown plan or invalid custom options" }, { status: 400 });
   }
+
+  // The browser enforces this too (type="email" required); re-check on the server.
+  const email = String(form?.get("email") ?? "").trim();
+  if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.redirect(`${origin}/?checkout=email#pricing`, 303);
+  }
   if (!stripeEnabled()) {
     console.error("[checkout] STRIPE_SECRET_KEY is not set");
     return NextResponse.redirect(`${origin}/?checkout=unavailable#pricing`, 303);
@@ -76,6 +82,8 @@ export async function POST(req: NextRequest) {
     ],
     success_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/#pricing`,
+    // Pre-fills (and locks) the email on Stripe's page; receipts and the license go here.
+    customer_email: email,
     client_reference_id: purchase.key,
     metadata: purchase.metadata,
     payment_intent_data: { metadata: purchase.metadata },

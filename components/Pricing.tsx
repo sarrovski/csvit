@@ -4,18 +4,45 @@ import CheckoutNotice from "./CheckoutNotice";
 import CustomPass from "./CustomPass";
 
 function BuyButton({ plan }: { plan: Plan }) {
-  // Plain form post: the server creates a Stripe Checkout Session and redirects to it.
+  // Submits the shared checkout form (email + this plan); the server then redirects to Stripe.
   return (
-    <form action="/api/checkout" method="POST">
-      <input type="hidden" name="plan" value={plan.id} />
-      <button
-        type="submit"
-        className={`${plan.featured ? "btn-primary font-medium" : "btn-ghost text-white"} inline-flex w-full cursor-pointer items-center justify-center rounded-full px-4 py-3 text-center text-[13px]`}
-        aria-describedby={`${plan.id}-billing ${plan.id}-consent`}
-      >
-        {plan.cta}
-      </button>
-    </form>
+    <button
+      type="submit"
+      name="plan"
+      value={plan.id}
+      className={`${plan.featured ? "btn-primary font-medium" : "btn-ghost text-white"} inline-flex w-full cursor-pointer items-center justify-center rounded-full px-4 py-3 text-center text-[13px]`}
+      aria-describedby={`${plan.id}-billing ${plan.id}-consent checkout-email-hint`}
+    >
+      {plan.cta}
+    </button>
+  );
+}
+
+function EmailField() {
+  return (
+    <div className="mx-auto max-w-xl rounded-2xl bg-ink-900 p-5 sm:p-6 ring-1 ring-white/[0.08]">
+      <label htmlFor="checkout-email" className="flex items-center gap-2 text-[14px] font-medium text-white">
+        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ember-500/15 font-mono text-[11px] text-ember-300 ring-1 ring-inset ring-ember-500/30">
+          1
+        </span>
+        Your email
+      </label>
+      <input
+        id="checkout-email"
+        name="email"
+        type="email"
+        required
+        autoComplete="email"
+        inputMode="email"
+        maxLength={254}
+        placeholder="you@example.com"
+        aria-describedby="checkout-email-hint"
+        className="mt-3 w-full rounded-xl bg-ink-950 px-4 py-3 text-[15px] text-white placeholder:text-ink-500 ring-1 ring-inset ring-white/12 outline-none transition focus:ring-2 focus:ring-ember-400"
+      />
+      <p id="checkout-email-hint" className="mt-2 text-[12px] leading-relaxed text-ink-400">
+        Your license key, download link and receipt are sent here. Then pick a pass below.
+      </p>
+    </div>
   );
 }
 
@@ -97,15 +124,23 @@ export default function Pricing() {
         </div>
 
         <div className="mt-12"><CheckoutNotice /></div>
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-white/[0.08] ring-1 ring-white/[0.08] sm:grid-cols-2 lg:grid-cols-5">
-          {plans.map((plan, i) => (
-            <PlanColumn key={plan.id} plan={plan} last={i === plans.length - 1} />
-          ))}
-        </div>
 
-        <div id="custom" className="mt-6 scroll-mt-20">
-          <CustomPass />
-        </div>
+        {/* One form for every pass: the clicked button sends its plan, the email goes along with it. */}
+        <form action="/api/checkout" method="POST">
+          <div className="mt-4">
+            <EmailField />
+          </div>
+
+          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl bg-white/[0.08] ring-1 ring-white/[0.08] sm:grid-cols-2 lg:grid-cols-5">
+            {plans.map((plan, i) => (
+              <PlanColumn key={plan.id} plan={plan} last={i === plans.length - 1} />
+            ))}
+          </div>
+
+          <div id="custom" className="mt-6 scroll-mt-20">
+            <CustomPass />
+          </div>
+        </form>
 
         <div className="mt-6 grid gap-px overflow-hidden rounded-2xl bg-white/[0.07] ring-1 ring-white/[0.07] md:grid-cols-2">
           <div className="bg-ink-900 p-7 sm:p-9">
