@@ -61,9 +61,11 @@ export default function PrivacyPage() {
         <li>
           <strong>Legal entity:</strong> {site.legalEntity}
         </li>
-        <li>
-          <strong>Registered address:</strong> {site.address}
-        </li>
+        {site.address && (
+          <li>
+            <strong>Registered address:</strong> {site.address}
+          </li>
+        )}
         {site.registration && (
           <li>
             <strong>Registration number:</strong> {site.registration}
@@ -265,9 +267,11 @@ export default function PrivacyPage() {
         <li>
           <strong>Email:</strong> <Email />
         </li>
-        <li>
-          <strong>Postal:</strong> {site.legalEntity}, {site.address}
-        </li>
+        {site.address && (
+          <li>
+            <strong>Postal:</strong> {site.legalEntity}, {site.address}
+          </li>
+        )}
       </ul>
     </LegalPage>
   );

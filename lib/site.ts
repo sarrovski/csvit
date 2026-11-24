@@ -17,8 +17,8 @@ export const site = {
    * expect your own legal name here, optionally "trading as" the brand.
    */
   legalEntity: "Sense Optimization" as string,
-  /** TODO: registered business address, as shown in your Stripe public details. */
-  address: "[REGISTERED BUSINESS ADDRESS]",
+  /** Business address. Optional: leave "" to hide it everywhere on the site. */
+  address: "" as string,
   /**
    * Company registration number + jurisdiction. Optional: sole traders without one
    * can leave this as "" and it is hidden everywhere.
@@ -46,6 +46,9 @@ export const site = {
 /** "Legal name, trading as Brand", or just the name when both are the same. */
 export const operatorName =
   site.legalEntity === site.name ? site.name : `${site.legalEntity}, trading as ${site.name}`;
+
+/** ", <address>" when an address is set, otherwise nothing. */
+export const addressSuffix = site.address ? `, ${site.address}` : "";
 
 export const mailto = (subject?: string) =>
   `mailto:${site.supportEmail}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`;

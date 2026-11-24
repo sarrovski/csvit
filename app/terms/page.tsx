@@ -268,9 +268,11 @@ export default function TermsPage() {
         <li>
           <strong>Operator:</strong> {site.legalEntity}
         </li>
-        <li>
-          <strong>Postal address:</strong> {site.address}
-        </li>
+        {site.address && (
+          <li>
+            <strong>Postal address:</strong> {site.address}
+          </li>
+        )}
         {site.registration && (
           <li>
             <strong>Company registration:</strong> {site.registration}
