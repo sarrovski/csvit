@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getPlan, mailto, site } from "@/lib/site";
+import { customLabel, getPlan, mailto, site } from "@/lib/site";
 import { stripe, stripeEnabled } from "@/lib/stripe";
 
 export const metadata: Metadata = {
   title: "Payment received",
   robots: { index: false },
 };
+
+function planName(meta: Record<string, string> | null | undefined) {
+  if (meta?.plan === "custom") {
+    const days = Number(meta.days);
+    const devices = Number(meta.devices);
+    return days && devices ? `Custom Pass (${customLabel(days, devices)})` : "Custom Pass";
+  }
+  return getPlan(meta?.plan)?.name ?? null;
+}
 
 async function loadSession(id: string | undefined) {
   if (!id || !stripeEnabled() || !/^cs_[A-Za-z0-9_]+$/.test(id)) return null;
@@ -15,7 +24,7 @@ async function loadSession(id: string | undefined) {
     if (s.status !== "complete") return null;
     return {
       email: s.customer_details?.email ?? null,
-      plan: getPlan(s.metadata?.plan),
+      planName: planName(s.metadata),
       total: s.amount_total,
     };
   } catch {
@@ -39,10 +48,10 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
         <div className="panel mt-10 rounded-2xl p-6 sm:p-8">
           {session ? (
             <dl className="grid gap-4 text-[15px] sm:grid-cols-[140px_1fr]">
-              {session.plan && (
+              {session.planName && (
                 <>
                   <dt className="text-ink-400">Plan</dt>
-                  <dd className="text-white">{session.plan.name}</dd>
+                  <dd className="text-white">{session.planName}</dd>
                 </>
               )}
               {session.total != null && (
@@ -50,7 +59,7 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
                   <dt className="text-ink-400">Charged</dt>
                   <dd className="font-mono text-white">
                     ${(session.total / 100).toFixed(2)} USD
-                    {session.plan?.mode === "subscription" && <span className="text-ink-400"> / month, renews until cancelled</span>}
+                    <span className="text-ink-400"> one-time, nothing renews</span>
                   </dd>
                 </>
               )}

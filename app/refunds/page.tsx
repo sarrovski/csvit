@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/LegalPage";
-import { addressSuffix, mailto, site } from "@/lib/site";
+import { addressSuffix, mailto, plans, REFUND_WINDOW_MIN_DAYS, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Refund & Cancellation Policy",
-  description: "How refunds and subscription cancellations work for Sense Optimization plans.",
+  title: "Refund Policy",
+  description: "When and how you can get a refund on Sense Optimization passes. Every plan is a one-time payment.",
 };
 
 const toc = [
@@ -14,7 +14,7 @@ const toc = [
   { id: "eligibility", label: "Refund eligibility" },
   { id: "how", label: "How to request a refund" },
   { id: "non-refundable", label: "What isn't refundable" },
-  { id: "cancellation", label: "Cancelling a subscription" },
+  { id: "no-subscriptions", label: "No subscriptions" },
   { id: "consumer-rights", label: "Statutory consumer rights" },
   { id: "chargebacks", label: "Chargebacks" },
   { id: "changes", label: "Changes to this policy" },
@@ -23,10 +23,16 @@ const toc = [
 
 const Email = ({ subject }: { subject?: string }) => <a href={mailto(subject)}>{site.supportEmail}</a>;
 
+const longRule = "Full refund within 14 days of purchase, for any reason.";
+const shortRule = "Full refund if not yet activated (request within 7 days of purchase). Non-refundable once activated.";
+
 const summary = [
-  { plan: "Basic: 24-hour pass ($4, one-time)", refund: "Full refund if not yet activated (request within 7 days). Non-refundable once activated." },
-  { plan: "Pro: monthly ($19/month, recurring)", refund: "Full refund within 14 days of your first payment. Renewals: see the 48-hour goodwill rule." },
-  { plan: "Elite: lifetime ($249, one-time)", refund: "Full refund within 14 days of purchase." },
+  ...plans.map((p) => ({
+    plan: `${p.name} (${p.cadenceLabel.toLowerCase()}, ${p.price})`,
+    refund: p.days === null || p.days >= REFUND_WINDOW_MIN_DAYS ? longRule : shortRule,
+  })),
+  { plan: `Custom Pass, ${REFUND_WINDOW_MIN_DAYS}+ days`, refund: longRule },
+  { plan: `Custom Pass, under ${REFUND_WINDOW_MIN_DAYS} days`, refund: shortRule },
 ];
 
 const steps = [
@@ -40,7 +46,7 @@ const steps = [
   },
   {
     title: "Include a few details",
-    body: "Your order number (from the Stripe receipt email), the plan purchased, and optionally a short note on why. Feedback helps us improve, but it's not required.",
+    body: "Your order number (from the Stripe receipt email), the pass you bought, and optionally a short note on why. Feedback helps us improve, but it's not required.",
   },
   {
     title: "We process the refund",
@@ -48,7 +54,7 @@ const steps = [
       <>
         Eligible requests are approved within <strong>2 business days</strong>. Refunds are issued to the
         original payment method and typically appear on your statement within 5–10 business days, depending
-        on your bank.
+        on your bank. Your license is deactivated once the refund is issued.
       </>
     ),
   },
@@ -57,19 +63,19 @@ const steps = [
 export default function RefundsPage() {
   return (
     <LegalPage
-      title="Refund & Cancellation Policy"
+      title="Refund Policy"
       toc={toc}
       intro={
         <p>
-          We want every purchase to feel fair. This page explains exactly when you can get your money back
-          and how to stop a subscription.
+          Every {site.name} plan is a single, one-time payment. This page explains exactly when you can get your
+          money back.
         </p>
       }
     >
       <h2 id="overview">Overview</h2>
       <p>
-        This Refund &amp; Cancellation Policy applies to all purchases of {site.name} plans (Basic, Pro and
-        Elite) made through our website via our payment processor, Stripe. It is part of, and incorporated by
+        This Refund Policy applies to all purchases of {site.name} passes (Day, Week, Month, Quarter, Lifetime and
+        Custom) made through our website via our payment processor, Stripe. It is part of, and incorporated by
         reference into, our <Link href="/terms">Terms of Service</Link>.
       </p>
 
@@ -96,32 +102,18 @@ export default function RefundsPage() {
       </div>
 
       <h2 id="eligibility">Refund eligibility</h2>
-      <h3>Pro (Monthly) &amp; Elite (Lifetime) plans</h3>
+      <h3>Passes of {REFUND_WINDOW_MIN_DAYS} days or more, and Lifetime</h3>
       <p>
-        You are eligible for a <strong>full refund within 14 days</strong> of your original purchase, for any
-        reason. No justification is required.
+        This covers the Month Pass, Quarter Pass, Lifetime, and any Custom Pass of {REFUND_WINDOW_MIN_DAYS} days or
+        longer. You are eligible for a <strong>full refund within 14 days</strong> of your purchase, for any
+        reason. No justification is required. We must receive your request before the 14-day window has elapsed.
       </p>
-      <ul>
-        <li>
-          For monthly plans, the 14-day window applies to your <strong>first payment only</strong>, not to
-          subsequent renewals.
-        </li>
-        <li>For lifetime plans, the 14-day window runs from the date of purchase.</li>
-        <li>To qualify, we must receive your refund request before the 14-day window has elapsed.</li>
-      </ul>
-      <h3>Basic (24-hour) passes</h3>
+      <h3>Passes shorter than {REFUND_WINDOW_MIN_DAYS} days</h3>
       <p>
-        Daily passes are short-duration access products. Because the full value is consumed within 24 hours
-        of activation, daily passes are <strong>non-refundable once activated</strong>. If you purchased a
-        daily pass and have not yet activated it, contact us within 7 days of purchase and we will issue a
-        full refund.
-      </p>
-      <h3>Renewal charges</h3>
-      <p>
-        Monthly subscription renewals are not automatically refundable. However, if you contact us within{" "}
-        <strong>48 hours</strong> of a renewal charge and have not materially used the Service during that
-        period, we will cancel the subscription and generally grant a full refund of that renewal as a
-        goodwill gesture.
+        This covers the Day Pass, Week Pass, and any Custom Pass shorter than {REFUND_WINDOW_MIN_DAYS} days. Most of
+        their value is used within days of activation, so they are <strong>non-refundable once activated</strong>.
+        If you have not activated the pass yet, contact us within 7 days of purchase and we will issue a full
+        refund.
       </p>
       <h3>Team &amp; volume licenses</h3>
       <p>
@@ -151,46 +143,39 @@ export default function RefundsPage() {
       <h2 id="non-refundable">What isn&rsquo;t refundable</h2>
       <p>The following are not eligible for a refund:</p>
       <ul>
-        <li>Requests submitted after the 14-day window</li>
-        <li>Activated daily passes</li>
-        <li>Subscription renewals beyond the 48-hour grace period described above</li>
+        <li>
+          Passes of {REFUND_WINDOW_MIN_DAYS} days or more and Lifetime, when the request arrives after the 14-day
+          window
+        </li>
+        <li>Passes shorter than {REFUND_WINDOW_MIN_DAYS} days that have been activated</li>
         <li>
           Accounts terminated for violation of our <Link href="/terms">Terms of Service</Link>
         </li>
-        <li>
-          Partial months or pro-rated portions of an active billing cycle (you keep access until the end of
-          the period instead)
-        </li>
+        <li>Unused remaining days of a pass (you keep access until the pass ends instead)</li>
       </ul>
 
-      <h2 id="cancellation">Cancelling a subscription</h2>
+      <h2 id="no-subscriptions">No subscriptions</h2>
       <p>
-        You can cancel a Pro subscription at any time, either from your account dashboard or by emailing{" "}
-        <Email subject="Cancel my subscription" />. We confirm every cancellation by email. Cancellation stops
-        all future charges immediately; you keep access until the end of the period you&rsquo;ve already paid
-        for.
+        We don&rsquo;t sell subscriptions. Every plan is charged once, at checkout. Nothing renews, there is nothing
+        to cancel, and you will never be charged again automatically. When a pass ends, access simply stops. If
+        you want more time, you can buy another pass whenever you like.
       </p>
-      <p>
-        Cancelling and requesting a refund are separate actions. If you want both (within the eligible
-        window), say so in your email and we&rsquo;ll handle both in one step.
-      </p>
-      <p>Basic passes and Elite lifetime licenses are one-time purchases. There is nothing to cancel.</p>
 
       <h2 id="consumer-rights">Statutory consumer rights</h2>
       <p>
-        This policy is in addition to, and does not limit, any statutory consumer rights you may have under
-        your local laws.
+        This policy is in addition to, and does not limit, any statutory consumer rights you may have under your
+        local laws.
       </p>
       <ul>
         <li>
-          <strong>European Union / UK:</strong> EU and UK consumers generally have a 14-day right of
-          withdrawal for digital content and services. By starting to use the Service immediately after
-          purchase, you may lose this right, but our 14-day refund window on Pro and Elite mirrors and
-          preserves this protection regardless.
+          <strong>European Union / UK:</strong> EU and UK consumers generally have a 14-day right of withdrawal
+          for digital content and services. By asking us to start the service immediately and activating your pass,
+          you acknowledge that you lose this right for that pass. Our 14-day refund window on passes of{" "}
+          {REFUND_WINDOW_MIN_DAYS} days or more applies regardless.
         </li>
         <li>
-          <strong>Other jurisdictions:</strong> Nothing in this policy overrides mandatory consumer protection
-          law in your country of residence.
+          <strong>Other jurisdictions:</strong> Nothing in this policy overrides mandatory consumer protection law
+          in your country of residence.
         </li>
       </ul>
 
@@ -218,7 +203,8 @@ export default function RefundsPage() {
           <strong>Response time:</strong> {site.supportResponseTime}
         </li>
         <li>
-          <strong>Operator:</strong> {site.legalEntity}{addressSuffix}
+          <strong>Operator:</strong> {site.legalEntity}
+          {addressSuffix}
         </li>
       </ul>
     </LegalPage>

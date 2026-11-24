@@ -75,29 +75,21 @@ const faqs: { q: string; a: React.ReactNode }[] = [
     a: "Yes. The overlay renders on a capture-friendly layer that works with OBS, Streamlabs and similar tools, and can be toggled per scene.",
   },
   {
-    q: "Which plans renew automatically?",
-    a: "Only Pro, billed $19 every month until you cancel. Basic ($4, 24 hours) and Elite ($249, lifetime) are one-time payments that never renew.",
+    q: "Is this a subscription?",
+    a: "No. Every plan is a single payment: Day ($4), Week ($9), Month ($19), Quarter ($39), Lifetime ($249), or a Custom Pass you size yourself. Nothing renews and you are never charged again automatically.",
   },
   {
-    q: "How do I cancel?",
-    a: (
-      <>
-        From your account dashboard, or by emailing{" "}
-        <a href={mailto("Cancel my subscription")} className="text-ember-300 underline underline-offset-2 [overflow-wrap:anywhere]">
-          {site.supportEmail}
-        </a>
-        . You won&rsquo;t be charged again and keep access until the end of the period you&rsquo;ve paid for.
-      </>
-    ),
+    q: "What happens when my pass ends?",
+    a: "Access simply stops at the end of the period. Nothing is charged. Your tuning profiles stay on your machine and can still be rolled back. Buy another pass whenever you want more time.",
   },
   {
     q: "What is the refund policy?",
     a: (
       <>
-        Pro and Elite: a full refund within 14 days of your first purchase, no questions asked. Basic passes are
-        refundable until activated. Details in the{" "}
+        Passes of 30 days or more and Lifetime: a full refund within 14 days of purchase, no questions asked.
+        Shorter passes are refundable until activated. Details in the{" "}
         <Link href="/refunds" className="text-ember-300 underline underline-offset-2">
-          Refund &amp; Cancellation Policy
+          Refund Policy
         </Link>
         .
       </>
@@ -167,7 +159,7 @@ export default function Home() {
             </Link>
           </div>
           <p className="rise mt-5 font-mono text-[11px] text-ink-400" style={{ animationDelay: ".38s" }}>
-            $4 day pass · $19/month · $249 lifetime
+            One-time payments from $4 · No subscriptions
           </p>
 
           <div className="rise relative mt-16 sm:mt-20" style={{ animationDelay: ".45s" }}>
